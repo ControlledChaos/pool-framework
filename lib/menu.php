@@ -214,8 +214,8 @@ if (!class_exists('kleo_walker_nav_menu')):
                     $fb_output .= ' class="' . $menu_class . '"';
 
                 $fb_output .= '>';
-                $fb_output .= '<li><a title="' . esc_html__( "Add a menu", 'buddyapp' ) . '" href="' . admin_url( 'nav-menus.php' ) . '">' .
-                    '<i class="icon-add-circle-outline"></i> <span>' . esc_html__( "Add a menu", 'buddyapp' ) . '</span>' .
+                $fb_output .= '<li><a title="' . esc_html__( "Add a menu", 'pool' ) . '" href="' . admin_url( 'nav-menus.php' ) . '">' .
+                    '<i class="icon-add-circle-outline"></i> <span>' . esc_html__( "Add a menu", 'pool' ) . '</span>' .
                     '</a></li>';
                 $fb_output .= '</ul>';
 

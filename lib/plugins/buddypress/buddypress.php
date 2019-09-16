@@ -42,18 +42,18 @@ function kleo_bp_online_settings( $kleo )
     //
 
     $kleo['panels']['kleo_panel_bp'] = array(
-        'title' => esc_html__( 'BuddyPress', 'buddyapp' ),
+        'title' => esc_html__( 'BuddyPress', 'pool' ),
         'priority' => 16
     );
 
     $kleo['sec']['kleo_section_bp'] = array(
-        'title' => esc_html__( 'General Settings', 'buddyapp' ),
+        'title' => esc_html__( 'General Settings', 'pool' ),
         'panel' => 'kleo_panel_bp',
         'priority' => 16
     );
 
     $kleo['sec']['kleo_section_bp_styling'] = array(
-        'title' => esc_html__( 'Profile side-menu styling', 'buddyapp' ),
+        'title' => esc_html__( 'Profile side-menu styling', 'pool' ),
         'panel' => 'kleo_panel_bp',
         'priority' => 17
     );
@@ -75,11 +75,11 @@ function kleo_bp_online_settings( $kleo )
 
     $kleo['set'][] = array(
         'id' => 'bp_online_status',
-        'title' => esc_html__('Enable members online status', 'buddyapp'),
+        'title' => esc_html__('Enable members online status', 'pool'),
         'type' => 'switch',
         'default' => '1',
         'section' => 'kleo_section_bp',
-        'description' => esc_html__('A graphical representation next to member avatar if a member is online.', 'buddyapp'),
+        'description' => esc_html__('A graphical representation next to member avatar if a member is online.', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -442,7 +442,7 @@ if ( ! function_exists( 'bp_groups_front_template_part' ) ) {
 add_filter('kleo_nav_menu_items', 'kleo_add_user_avatar_nav_item' );
 function kleo_add_user_avatar_nav_item( $menu_items ) {
     $menu_items[] = array(
-        'name' => __( 'My Account', 'buddyapp' ),
+        'name' => __( 'My Account', 'pool' ),
         'slug' => 'user_avatar',
         'link' => '#',
     );

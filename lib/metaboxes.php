@@ -19,7 +19,7 @@ function kleo_define_metaboxes( array $meta_boxes ) {
 
     $meta_boxes['general_metabox'] = array(
         'id'            => 'general_metabox',
-        'title'         => esc_html__( 'Theme General options', 'buddyapp' ),
+        'title'         => esc_html__( 'Theme General options', 'pool' ),
         'object_types'  => array( 'post', 'page' , 'product' ), // Post type
         'context'       => 'normal',
         'priority'      => 'high',
@@ -29,8 +29,8 @@ function kleo_define_metaboxes( array $meta_boxes ) {
         'fields'        => array(
 
             array(
-                'name' => esc_html__( 'Show page title section', 'buddyapp' ),
-                'desc' => esc_html__( 'If you want to show the page title section on your page','buddyapp'),
+                'name' => esc_html__( 'Show page title section', 'pool' ),
+                'desc' => esc_html__( 'If you want to show the page title section on your page','pool'),
                 'id'   => $prefix . 'page_title_enable',
                 'type' => 'select',
                 'options' => array(
@@ -41,15 +41,15 @@ function kleo_define_metaboxes( array $meta_boxes ) {
                 'value' => ''
             ),
             array(
-                'name' => esc_html__( 'Custom page background color','buddyapp'),
-                'desc' => esc_html__('A custom background color just for this page','buddyapp'),
+                'name' => esc_html__( 'Custom page background color','pool'),
+                'desc' => esc_html__('A custom background color just for this page','pool'),
                 'id'   => $prefix . 'page_bg',
                 'type' => 'colorpicker',
                 'default' => ''
             ),
             array(
-                'name' => esc_html__( 'Custom page background','buddyapp'),
-                'desc' => esc_html__('A custom background image just for this page','buddyapp'),
+                'name' => esc_html__( 'Custom page background','pool'),
+                'desc' => esc_html__('A custom background image just for this page','pool'),
                 'id'   => $prefix . 'page_bg_image',
                 'type' => 'file',
                 'allow' => 'url',
@@ -61,7 +61,7 @@ function kleo_define_metaboxes( array $meta_boxes ) {
 
     $meta_boxes['post_metabox'] = array(
         'id'            => 'post_metabox',
-        'title'         => esc_html__( 'Theme Post options', 'buddyapp' ),
+        'title'         => esc_html__( 'Theme Post options', 'pool' ),
         'object_types'  => array( 'post' ), // Post type
         'context'       => 'normal',
         'priority'      => 'high',
@@ -92,7 +92,7 @@ function kleo_define_metaboxes( array $meta_boxes ) {
             ),
             array(
                 'name' => 'Video oEmbed URL',
-                'desc' => wp_kses_data( __( 'Enter a youtube, twitter, or instagram URL. Supports services listed at <a target="_blank" href="http://codex.wordpress.org/Embeds">http://codex.wordpress.org/Embeds</a>.', 'buddyapp' ) ),
+                'desc' => wp_kses_data( __( 'Enter a youtube, twitter, or instagram URL. Supports services listed at <a target="_blank" href="http://codex.wordpress.org/Embeds">http://codex.wordpress.org/Embeds</a>.', 'pool' ) ),
                 'id'   => $prefix . 'embed',
                 'type' => 'oembed',
             ),
@@ -101,22 +101,22 @@ function kleo_define_metaboxes( array $meta_boxes ) {
 
     $meta_boxes['post_layout'] = array(
         'id'         => 'post_layout',
-        'title'      => esc_html__('Post Layout Settings', 'buddyapp'),
+        'title'      => esc_html__('Post Layout Settings', 'pool'),
         'object_types'      => array( 'post', 'product' ), // Post type
         'context'    => 'side',
         'priority'   => 'default',
         'show_names' => false, // Show field names on the left
         'fields'     => array(
             array(
-                'name' => esc_html__('Post Layout', 'buddyapp'),
+                'name' => esc_html__('Post Layout', 'pool'),
                 'desc' => '',
                 'id'   => $prefix . 'post_layout',
                 'type' => 'select',
                 'options' => array(
-                    'default' => esc_html__('Default', 'buddyapp'),
-                    'right' => esc_html__('Right Sidebar', 'buddyapp'),
-                    'left' => esc_html__('Left sidebar', 'buddyapp'),
-                    'full' => esc_html__('Full width, no sidebar', 'buddyapp'),
+                    'default' => esc_html__('Default', 'pool'),
+                    'right' => esc_html__('Right Sidebar', 'pool'),
+                    'left' => esc_html__('Left sidebar', 'pool'),
+                    'full' => esc_html__('Full width, no sidebar', 'pool'),
                 ),
                 'value' => 'default'
             ),
@@ -126,23 +126,23 @@ function kleo_define_metaboxes( array $meta_boxes ) {
 
     $meta_boxes['header_settings'] = array(
         'id'         => 'header_settings',
-        'title'      => esc_html__('Header Settings', 'buddyapp'),
+        'title'      => esc_html__('Header Settings', 'pool'),
         'object_types'      => array( 'post', 'product', 'page' ), // Post type
         'context'    => 'side',
         'priority'   => 'default',
         'show_names' => true, // Show field names on the left
         'fields'     => array(
             array(
-                'name' => esc_html__('Sidemenu status', 'buddyapp'),
+                'name' => esc_html__('Sidemenu status', 'pool'),
                 'id'   => $prefix . 'header_sidemenu',
                 'type' => 'select',
                 'options' => array(
-                    'default' => esc_html__('Default', 'buddyapp'),
-                    'enabled' => esc_html__('Enabled', 'buddyapp'),
-                    'disabled' => esc_html__('Disabled', 'buddyapp'),
+                    'default' => esc_html__('Default', 'pool'),
+                    'enabled' => esc_html__('Enabled', 'pool'),
+                    'disabled' => esc_html__('Disabled', 'pool'),
                 ),
                 'value' => 'default',
-                'desc' => esc_html__('Enabled/Disable the sidemenu', 'buddyapp')
+                'desc' => esc_html__('Enabled/Disable the sidemenu', 'pool')
             ),
 
         ),

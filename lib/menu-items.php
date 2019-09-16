@@ -12,7 +12,7 @@ add_action( 'load-nav-menus.php', 'kleo_admin_wp_nav_menu_meta_box' );
  */
 function kleo_admin_wp_nav_menu_meta_box() {
 
-    add_meta_box( 'add-kleo-nav-menu', esc_html__( 'BuddyApp', 'buddyapp' ), 'kleo_admin_do_wp_nav_menu_meta_box', 'nav-menus', 'side', 'default' );
+    add_meta_box( 'add-kleo-nav-menu', esc_html__( 'BuddyApp', 'pool' ), 'kleo_admin_do_wp_nav_menu_meta_box', 'nav-menus', 'side', 'default' );
 
     add_action( 'admin_print_footer_scripts', 'kleo_admin_wp_nav_menu_restrict_items' );
 }
@@ -26,17 +26,17 @@ function kleo_get_nav_menu_items() {
     $menu_items = array();
 
     $menu_items[] = array(
-        'name' => esc_html__( 'Login', 'buddyapp' ),
+        'name' => esc_html__( 'Login', 'pool' ),
         'slug' => 'login',
         'link' => '#'
     );
     $menu_items[] = array(
-        'name' => esc_html__( 'Logout', 'buddyapp' ),
+        'name' => esc_html__( 'Logout', 'pool' ),
         'slug' => 'logout',
         'link' => "#"
     );
     $menu_items[] = array(
-        'name' => esc_html__( 'Register', 'buddyapp' ),
+        'name' => esc_html__( 'Register', 'pool' ),
         'slug' => 'register',
         'link' => "#"
     );
@@ -96,7 +96,7 @@ function kleo_admin_do_wp_nav_menu_meta_box() {
     $page_args = kleo_get_nav_menu_items();
 
     if (! $page_args) {
-        esc_html_e( 'No items available here for the moment' , 'buddyapp' );
+        esc_html_e( 'No items available here for the moment' , 'pool' );
         return;
     }
 
@@ -104,7 +104,7 @@ function kleo_admin_do_wp_nav_menu_meta_box() {
     ?>
 
     <div id="kleo-menu" class="posttypediv">
-        <p><?php esc_html_e( 'Some links are relative to the current user, and are not visible to visitors who are not logged in.', 'buddyapp' ) ?></p>
+        <p><?php esc_html_e( 'Some links are relative to the current user, and are not visible to visitors who are not logged in.', 'pool' ) ?></p>
 
         <div id="tabs-panel-posttype-<?php echo esc_attr( $post_type_name ); ?>-loggedin" class="tabs-panel tabs-panel-active">
             <ul id="kleo-menu-checklist-loggedin" class="categorychecklist form-no-clear">
@@ -123,7 +123,7 @@ function kleo_admin_do_wp_nav_menu_meta_box() {
 				<input
                     type="submit"<?php if (function_exists('wp_nav_menu_disabled_check')) : wp_nav_menu_disabled_check($nav_menu_selected_id); endif; ?>
                     class="button-secondary submit-add-to-menu right"
-                    value="<?php esc_attr_e('Add to Menu', 'buddyapp'); ?>" name="add-custom-menu-item"
+                    value="<?php esc_attr_e('Add to Menu', 'pool'); ?>" name="add-custom-menu-item"
                     id="submit-kleo-menu"/>
 				<span class="spinner"></span>
 			</span>
@@ -374,7 +374,7 @@ function kleo_customizer_nav_menus_get_items( $items = array(), $type = '', $obj
             'type'       => $type,
             'url'        => esc_url_raw( $item->guid ),
             'classes'    => "kleo-menu kleo-{$item->post_excerpt}-nav",
-            'type_label' => _x( 'Custom Link', 'customizer menu type label', 'buddyapp' ),
+            'type_label' => _x( 'Custom Link', 'customizer menu type label', 'pool' ),
             'object'     => $object,
             'object_id'  => -1,
         );
@@ -393,7 +393,7 @@ add_filter( 'customize_nav_menu_available_items', 'kleo_customizer_nav_menus_get
 function kleo_bp_customizer_nav_menus_set_item_types( $item_types = array() ) {
     $item_types = array_merge( $item_types, array(
         'kleo_nav' => array(
-            'title'  => _x( 'BuddyApp', 'customizer menu section title', 'buddyapp' ),
+            'title'  => _x( 'BuddyApp', 'customizer menu section title', 'pool' ),
             'type'   => 'kleo_nav',
             'object' => 'kleo_nav',
         ),

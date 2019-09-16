@@ -4,7 +4,7 @@
 add_filter('kleo_nav_menu_items', 'kleo_add_tasks_nav_item' );
 function kleo_add_tasks_nav_item( $menu_items ) {
     $menu_items[] = array(
-        'name' => esc_html__( 'Tasks', 'buddyapp' ),
+        'name' => esc_html__( 'Tasks', 'pool' ),
         'slug' => 'tasks',
         'link' => '#',
     );
@@ -37,7 +37,7 @@ if( !function_exists( 'kleo_menu_tasks' ) ) {
             <?php if ($count > 0) : ?>
                 <b class="bubble"><?php echo esc_html($count); ?></b>
             <?php endif; ?>
-            <span><?php esc_html_e('Tasks', 'buddyapp'); ?></span>
+            <span><?php esc_html_e('Tasks', 'pool'); ?></span>
         </a>
         <em class="menu-arrow"></em>
         <ul class="submenu">

@@ -32,14 +32,14 @@ if ( ! isset( $before_input ) ) {
                 <span class="login-input-wrapper">
                     <input type="text" class="form-control login-field username" required name="log" value="">
                     <label class="login-label">
-                        <span class="login-label-content"><?php esc_html_e( "Username", 'buddyapp' );?></span>
+                        <span class="login-label-content"><?php esc_html_e( "Username", 'pool' );?></span>
                     </label>
                 </span>
                 
                 <span class="login-input-wrapper">
                     <input type="password" class="form-control login-field" required name="pwd" value="">
                     <label class="login-label">
-                        <span class="login-label-content"><?php esc_html_e( "Password", 'buddyapp' );?></span>
+                        <span class="login-label-content"><?php esc_html_e( "Password", 'pool' );?></span>
                     </label>
                 </span>
 
@@ -51,7 +51,7 @@ if ( ! isset( $before_input ) ) {
                     <input name="rememberme" type="checkbox" value="forever">
                     <label></label>
                     <span><?php esc_html_e( "Remember me", "buddyapp" ); ?></span>
-                    <a href="#kleo-lostpass-modal" class="show-lostpass kleo-other-action"><?php esc_html_e( 'Lost your password?', 'buddyapp' );?></a>
+                    <a href="#kleo-lostpass-modal" class="show-lostpass kleo-other-action"><?php esc_html_e( 'Lost your password?', 'pool' );?></a>
                 </div>
                 <span class="clearfix"></span>
             

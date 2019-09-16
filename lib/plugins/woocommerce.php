@@ -20,7 +20,7 @@ function kleo_woo_settings( $kleo ) {
     //
 
     $kleo['sec']['kleo_section_woo'] = array(
-        'title'    => esc_html__( 'WooCommerce', 'buddyapp' ),
+        'title'    => esc_html__( 'WooCommerce', 'pool' ),
         'priority' => 40
     );
 
@@ -32,43 +32,43 @@ function kleo_woo_settings( $kleo ) {
     $kleo['set'][] = array(
         'id'          => 'woo_sidebar',
         'type'        => 'select',
-        'title'       => esc_html__( 'Woocommerce Pages Layout', 'buddyapp' ),
+        'title'       => esc_html__( 'Woocommerce Pages Layout', 'pool' ),
         'default'     => 'default',
         'choices' => array(
-            'default' => esc_html__( 'Default site layout', 'buddyapp'),
-            'no' => esc_html__( 'Full width', 'buddyapp'),
-            'left' => esc_html__( 'Left Sidebar', 'buddyapp'),
-            'right' => esc_html__( 'Right Sidebar', 'buddyapp'),
+            'default' => esc_html__( 'Default site layout', 'pool'),
+            'no' => esc_html__( 'Full width', 'pool'),
+            'left' => esc_html__( 'Left Sidebar', 'pool'),
+            'right' => esc_html__( 'Right Sidebar', 'pool'),
         ),
         'section'     => 'kleo_section_woo',
-        'description' => esc_html__( 'Select the default layout to use in Woocommerce pages.', 'buddyapp' ),
+        'description' => esc_html__( 'Select the default layout to use in Woocommerce pages.', 'pool' ),
         'customizer'  => false,
     );
 
     $kleo['set'][] = array(
         'id'          => 'woo_cat_sidebar',
         'type'        => 'select',
-        'title'       => esc_html__( 'Woocommerce Category Layout', 'buddyapp' ),
+        'title'       => esc_html__( 'Woocommerce Category Layout', 'pool' ),
         'default'     => 'default',
         'choices' => array(
-            'default' => esc_html__( 'Default as set above', 'buddyapp'),
-            'no' => esc_html__( 'Full width', 'buddyapp'),
-            'left' => esc_html__( 'Left Sidebar', 'buddyapp'),
-            'right' => esc_html__( 'Right Sidebar', 'buddyapp'),
+            'default' => esc_html__( 'Default as set above', 'pool'),
+            'no' => esc_html__( 'Full width', 'pool'),
+            'left' => esc_html__( 'Left Sidebar', 'pool'),
+            'right' => esc_html__( 'Right Sidebar', 'pool'),
         ),
         'section'     => 'kleo_section_woo',
-        'description' => esc_html__( 'Select the layout to use in Woocommerce product listing pages.', 'buddyapp' ),
+        'description' => esc_html__( 'Select the layout to use in Woocommerce product listing pages.', 'pool' ),
         'customizer'  => false,
     );
 
     $kleo['set'][] = array(
         'id'          => 'woo_custom_cat_size',
         'type'        => 'switch',
-        'title'       => esc_html__( 'Custom Category Image size', 'buddyapp' ),
+        'title'       => esc_html__( 'Custom Category Image size', 'pool' ),
         'default'     => '0',
         'section'     => 'kleo_section_woo',
         'description' => sprintf(
-            __( 'Enable custom category thumb sizes. It requires thumb regeneration using <a href="%s">Force regenerate thumbnails plugin</a>.', 'buddyapp' ),
+            __( 'Enable custom category thumb sizes. It requires thumb regeneration using <a href="%s">Force regenerate thumbnails plugin</a>.', 'pool' ),
             'https://wordpress.org/plugins/force-regenerate-thumbnails/'),
         'customizer'  => false,
     );
@@ -76,10 +76,10 @@ function kleo_woo_settings( $kleo ) {
     $kleo['set'][] = array(
         'id' => 'woo_cat_width',
         'type' => 'text',
-        'title' => esc_html__( 'Category thumb width' , 'buddyapp' ),
+        'title' => esc_html__( 'Category thumb width' , 'pool' ),
         'default' => '',
         'section' => 'kleo_section_woo',
-        'description' => esc_html__('Set the width in pixels. Ex: 400', 'buddyapp'),
+        'description' => esc_html__('Set the width in pixels. Ex: 400', 'pool'),
         'customizer' => false,
         'transport' => 'refresh',
         'condition' => array( 'woo_custom_cat_size', 1 )
@@ -88,10 +88,10 @@ function kleo_woo_settings( $kleo ) {
     $kleo['set'][] = array(
         'id' => 'woo_cat_height',
         'type' => 'text',
-        'title' => esc_html__( 'Category thumb height' , 'buddyapp' ),
+        'title' => esc_html__( 'Category thumb height' , 'pool' ),
         'default' => '',
         'section' => 'kleo_section_woo',
-        'description' => esc_html__('Set the height in pixels. Ex: 300', 'buddyapp'),
+        'description' => esc_html__('Set the height in pixels. Ex: 300', 'pool'),
         'customizer' => false,
         'transport' => 'refresh',
         'condition' => array( 'woo_custom_cat_size', 1 )
@@ -100,20 +100,20 @@ function kleo_woo_settings( $kleo ) {
     $kleo['set'][] = array(
         'id'          => 'woo_catalog',
         'type'        => 'switch',
-        'title'       => esc_html__( 'Enable Catalog mode', 'buddyapp' ),
+        'title'       => esc_html__( 'Enable Catalog mode', 'pool' ),
         'default'     => '0',
         'section'     => 'kleo_section_woo',
-        'description' => esc_html__( 'If you enable catalog mode will disable Add To Cart buttons, Checkout and Shopping cart.', 'buddyapp' ),
+        'description' => esc_html__( 'If you enable catalog mode will disable Add To Cart buttons, Checkout and Shopping cart.', 'pool' ),
         'customizer'  => false,
     );
 
     $kleo['set'][] = array(
         'id'          => 'woo_disable_prices',
         'type'        => 'switch',
-        'title'       => esc_html__( 'Disable prices', 'buddyapp' ),
+        'title'       => esc_html__( 'Disable prices', 'pool' ),
         'default'     => '0',
         'section'     => 'kleo_section_woo',
-        'description' => esc_html__( 'Disable prices on category pages and product page.', 'buddyapp' ),
+        'description' => esc_html__( 'Disable prices on category pages and product page.', 'pool' ),
         'customizer'  => false,
         'condition' => array( 'woo_catalog', 1 )
     );

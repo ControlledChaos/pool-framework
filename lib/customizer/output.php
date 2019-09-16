@@ -35,7 +35,7 @@ function kleo_customizer_custom_head_css() {
         $parser->ModifyVars( $variables );
         $css = $parser->getCss();
     } catch ( Exception $e ) {
-        esc_html_e( 'Something went wrong when compiling less files.', 'buddyapp');
+        esc_html_e( 'Something went wrong when compiling less files.', 'pool');
     }
 
     echo "\n<style>";

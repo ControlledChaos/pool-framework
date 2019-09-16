@@ -71,10 +71,10 @@ if (!function_exists('kleo_post_nav')) {
         <nav class="pagination-sticky" role="navigation">
             <?php
             if (is_attachment()) :
-                previous_post_link('%link', wp_kses_data(__('<span id="older-nav">Go to article</span>', 'buddyapp')));
+                previous_post_link('%link', wp_kses_data(__('<span id="older-nav">Go to article</span>', 'pool')));
             else :
-                previous_post_link('%link', '<span id="older-nav"><span class="outter-title"><span class="entry-title">' . esc_html__('Previous Post', 'buddyapp') . '</span></span></span>', $same_cat);
-                next_post_link('%link', '<span id="newer-nav"><span class="outter-title"><span class="entry-title">' . esc_html__('Next Post', 'buddyapp') . '</span>', $same_cat);
+                previous_post_link('%link', '<span id="older-nav"><span class="outter-title"><span class="entry-title">' . esc_html__('Previous Post', 'pool') . '</span></span></span>', $same_cat);
+                next_post_link('%link', '<span id="newer-nav"><span class="outter-title"><span class="entry-title">' . esc_html__('Next Post', 'pool') . '</span>', $same_cat);
             endif;
             ?>
         </nav><!-- .navigation -->
@@ -204,14 +204,14 @@ if (!function_exists('kleo_comment_nav')) :
         if (get_comment_pages_count() > 1 && get_option('page_comments')) :
             ?>
             <nav class="navigation comment-navigation" role="navigation">
-                <h2 class="screen-reader-text"><?php esc_html_e('Comment navigation', 'buddyapp'); ?></h2>
+                <h2 class="screen-reader-text"><?php esc_html_e('Comment navigation', 'pool'); ?></h2>
                 <div class="nav-links">
                     <?php
-                    if ($prev_link = get_previous_comments_link(esc_html__('Older Comments', 'buddyapp'))) :
+                    if ($prev_link = get_previous_comments_link(esc_html__('Older Comments', 'pool'))) :
                         printf('<div class="nav-previous">%s</div>', $prev_link);
                     endif;
 
-                    if ($next_link = get_next_comments_link(esc_html__('Newer Comments', 'buddyapp'))) :
+                    if ($next_link = get_next_comments_link(esc_html__('Newer Comments', 'pool'))) :
                         printf('<div class="nav-next">%s</div>', $next_link);
                     endif;
                     ?>
@@ -299,7 +299,7 @@ if (!function_exists('kleo_bp_menu')) {
         //echo '<li class="separator"></li>';
         echo '<li' . $alt . '><a id="kleo-menu-logout" href="' . wp_logout_url(home_url()) . '">'
             . '<i class="icon-logout"></i> '
-            . esc_html__('Log Out', 'buddyapp') . '</a></li>';
+            . esc_html__('Log Out', 'pool') . '</a></li>';
 
         echo '</ul>';
 
@@ -370,7 +370,7 @@ function kleo_search_form($atts = array(), $content = null)
         'input_id' => 'main-search',
         'input_class' => 'header-search',
         'input_name' => 's',
-        'input_placeholder' => __('Search', 'buddyapp'),
+        'input_placeholder' => __('Search', 'pool'),
         'button_class' => 'header-search-button',
         'hidden' => '',
     ), $atts));
@@ -482,9 +482,9 @@ if (!function_exists('kleo_ajax_search')) {
             $output = "<div class='kleo_ajax_entry ajax_not_found'>";
             $output .= "<div class='ajax_search_content'>";
             $output .= "<i class='icon icon-info-outline'></i> ";
-            $output .= esc_html__("Sorry, we haven't found anything based on your criteria.", 'buddyapp');
+            $output .= esc_html__("Sorry, we haven't found anything based on your criteria.", 'pool');
             $output .= "<br>";
-            $output .= esc_html__("Please try searching by different terms.", 'buddyapp');
+            $output .= esc_html__("Please try searching by different terms.", 'pool');
             $output .= "</div>";
             $output .= "</div>";
             echo $output;
@@ -495,7 +495,7 @@ if (!function_exists('kleo_ajax_search')) {
         if ($members['total'] != 0) {
 
             $output .= '<div class="kleo-ajax-part kleo-ajax-type-members">';
-            $output .= '<h4><span>' . esc_html__("Members", 'buddyapp') . '</span></h4>';
+            $output .= '<h4><span>' . esc_html__("Members", 'pool') . '</span></h4>';
             foreach ((array)$members['users'] as $member) {
                 //$image = '<img src="' . bp_core_fetch_avatar(array('item_id' => $member-> ID, 'width' => 80, 'height' => 80, 'html' => false)) . '" class="kleo-rounded" alt="">';
                 $image_args = array(
@@ -521,7 +521,7 @@ if (!function_exists('kleo_ajax_search')) {
                 $output .= "</div>";
                 $output .= "</div>";
             }
-            $output .= "<a class='ajax_view_all' href='" . esc_url(bp_get_members_directory_permalink()) . "?s=" . $search_string . "'>" . esc_html__('View member results', 'buddyapp') . "</a>";
+            $output .= "<a class='ajax_view_all' href='" . esc_url(bp_get_members_directory_permalink()) . "?s=" . $search_string . "'>" . esc_html__('View member results', 'pool') . "</a>";
             $output .= "</div>";
         }
 
@@ -529,7 +529,7 @@ if (!function_exists('kleo_ajax_search')) {
         if ($groups['total'] != 0) {
 
             $output .= '<div class="kleo-ajax-part kleo-ajax-type-groups">';
-            $output .= '<h4><span>' . esc_html__("Groups", 'buddyapp') . '</span></h4>';
+            $output .= '<h4><span>' . esc_html__("Groups", 'pool') . '</span></h4>';
             foreach ((array)$groups['groups'] as $group) {
                 $image = '<img src="' . bp_core_fetch_avatar(array('item_id' => $group->id, 'object' => 'group', 'width' => 80, 'height' => 80, 'html' => false)) . '" class="kleo-rounded" alt="">';
                 $output .= "<div class ='kleo_ajax_entry'>";
@@ -541,7 +541,7 @@ if (!function_exists('kleo_ajax_search')) {
                 $output .= "</div>";
                 $output .= "</div>";
             }
-            $output .= "<a class='ajax_view_all' href='" . esc_url(bp_get_groups_directory_permalink()) . "?s=" . $search_string . "'>" . esc_html__('View group results', 'buddyapp') . "</a>";
+            $output .= "<a class='ajax_view_all' href='" . esc_url(bp_get_groups_directory_permalink()) . "?s=" . $search_string . "'>" . esc_html__('View group results', 'pool') . "</a>";
             $output .= "</div>";
         }
 
@@ -630,13 +630,13 @@ if (!function_exists('kleo_ajax_search')) {
              
             }
 
-            $output .= "<a class='ajax_view_all' href='" . esc_url( home_url( '/' ) . '?s=' . $search_string ) . $search_str_posts . "'>" . esc_html__( 'View all results', 'buddyapp' ) . "</a>";
+            $output .= "<a class='ajax_view_all' href='" . esc_url( home_url( '/' ) . '?s=' . $search_string ) . $search_str_posts . "'>" . esc_html__( 'View all results', 'pool' ) . "</a>";
         }
 
         /* Forums topics search */
         if (!empty($forums)) {
             $output .= '<div class="kleo-ajax-part kleo-ajax-type-forums">';
-            $output .= '<h4><span>' . esc_html__("Forums", 'buddyapp') . '</span></h4>';
+            $output .= '<h4><span>' . esc_html__("Forums", 'pool') . '</span></h4>';
 
             $i = 0;
             foreach ($forums as $fk => $forum) {
@@ -655,7 +655,7 @@ if (!function_exists('kleo_ajax_search')) {
                     $output .= "</div>";
                 }
             }
-            $output .= "<a class='ajax_view_all' href='" . bbp_get_search_url() . "?bbp_search=" . $search_string . "'>" . esc_html__('View forum results', 'buddyapp') . "</a>";
+            $output .= "<a class='ajax_view_all' href='" . bbp_get_search_url() . "?bbp_search=" . $search_string . "'>" . esc_html__('View forum results', 'pool') . "</a>";
             $output .= "</div>";
         }
 
@@ -836,16 +836,16 @@ if (!function_exists('kleo_entry_meta')) {
             if (in_array('author_link', $meta_elements) || in_array('avatar', $meta_elements)) {
 
                 $author_link = get_author_posts_url($author_id);
-                $author_title = esc_attr(sprintf(esc_html__('View all POSTS by %s', 'buddyapp'), $author_name));
+                $author_title = esc_attr(sprintf(esc_html__('View all POSTS by %s', 'pool'), $author_name));
 
                 if (function_exists('bp_is_active')) {
                     $author_link = bp_core_get_user_domain($author_id);
-                    $author_title = esc_attr(sprintf(esc_html__('View %s\'s profile', 'buddyapp'), $author_name));
+                    $author_title = esc_attr(sprintf(esc_html__('View %s\'s profile', 'pool'), $author_name));
                 }
 
                 if (in_array('avatar', $meta_elements)) {
                     $output .= '<' . $args['entry_tag'] . ' class="meta-avatar">';
-                    $output .= sprintf(wp_kses_data(__('<a href="%s" title="%s">%s</a>', 'buddyapp')),
+                    $output .= sprintf(wp_kses_data(__('<a href="%s" title="%s">%s</a>', 'pool')),
                         $author_link,
                         $author_title,
                         get_avatar($author_id, 50)
@@ -855,7 +855,7 @@ if (!function_exists('kleo_entry_meta')) {
 
                 if (in_array('author_link', $meta_elements)) {
                     $output .= '<' . $args['entry_tag'] . ' class="meta-author author vcard">';
-                    $output .= sprintf(wp_kses_data(__('<a class="url fn n" href="%s" title="%s" rel="author">%s</a>', 'buddyapp')),
+                    $output .= sprintf(wp_kses_data(__('<a class="url fn n" href="%s" title="%s" rel="author">%s</a>', 'pool')),
                         $author_link,
                         $author_title,
                         $author_name
@@ -869,7 +869,7 @@ if (!function_exists('kleo_entry_meta')) {
             if (function_exists('bp_is_active') && bp_is_active('messages') && in_array('message', $meta_elements)) {
                 $output .= '<' . $args['entry_tag'] . ' class="meta-message">';
                 $output .= '<a href="' . wp_nonce_url(bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_core_get_username($author_id)) . '">' .
-                    '<i class="icon-mail"></i>' . esc_html__('Private message', 'buddyapp') .
+                    '<i class="icon-mail"></i>' . esc_html__('Private message', 'pool') .
                     '</a>';
                 $output .= '</' . $args['entry_tag'] . '>';
             }
@@ -895,12 +895,12 @@ if (!function_exists('kleo_entry_meta')) {
 
             // Translators: used between list items, there is a space after the comma.
             if (in_array('categories', $meta_elements)) {
-                $categories_list = get_the_category_list(esc_html__(', ', 'buddyapp'));
+                $categories_list = get_the_category_list(esc_html__(', ', 'pool'));
             }
 
             // Translators: used between list items, there is a space after the comma.
             if (in_array('tags', $meta_elements)) {
-                $tags_list = get_the_tag_list('', esc_html__(', ', 'buddyapp'));
+                $tags_list = get_the_tag_list('', esc_html__(', ', 'pool'));
             }
 
             if (!empty($categories_list)) {
@@ -1378,17 +1378,17 @@ function kleo_wise_settings( $kleo ) {
 	//
 
 	$kleo['sec']['kleo_section_wise'] = array(
-		'title' => esc_html__('WiseChat', 'buddyapp'),
+		'title' => esc_html__('WiseChat', 'pool'),
 		'priority' => 40
 	);
 
 	$kleo['set'][] = array(
 		'id' => 'wise_css',
 		'type' => 'switch',
-		'title' => esc_html__('Enable WiseChat Theme CSS ', 'buddyapp'),
+		'title' => esc_html__('Enable WiseChat Theme CSS ', 'pool'),
 		'default' => '1',
 		'section' => 'kleo_section_wise',
-		'description' => esc_html__('Enable the theme css added by us to style the chat', 'buddyapp'),
+		'description' => esc_html__('Enable the theme css added by us to style the chat', 'pool'),
 		'transport' => 'postMessage',
 		'customizer' => false,
 	);

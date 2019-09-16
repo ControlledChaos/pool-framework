@@ -10,11 +10,11 @@ function kleo_bp_messages_settings( $kleo )
 
     $kleo['set'][] = array(
         'id' => 'bp_notif_interval',
-        'title' => esc_html__('AJAX refresh interval', 'buddyapp'),
+        'title' => esc_html__('AJAX refresh interval', 'pool'),
         'type' => 'text',
         'default' => '30000',
         'section' => 'kleo_section_bp',
-        'description' => esc_html__('Set to 0(zero) if you want to disable AJAX checks. Expressed in millisecond, 30000 is 30 seconds', 'buddyapp'),
+        'description' => esc_html__('Set to 0(zero) if you want to disable AJAX checks. Expressed in millisecond, 30000 is 30 seconds', 'pool'),
         'customizer' => true,
         'transport' => 'postMessage'
     );
@@ -27,7 +27,7 @@ function kleo_bp_messages_settings( $kleo )
 add_filter('kleo_nav_menu_items', 'kleo_add_messages_nav_item' );
 function kleo_add_messages_nav_item( $menu_items ) {
   $menu_items[] = array(
-    'name' => esc_html__( 'Live Messages', 'buddyapp' ),
+    'name' => esc_html__( 'Live Messages', 'pool' ),
     'slug' => 'messages',
     'link' => '#',
   );
@@ -53,8 +53,8 @@ function kleo_menu_messages( $item_output = '', $item = null, $depth = 1, $args 
 
     if( ! isset( $item ) ) {
         $item = new stdClass();
-        $item->title = esc_html__( 'Messages', 'buddyapp' );
-        $item->attr_title = esc_html__( 'Messages', 'buddyapp' );
+        $item->title = esc_html__( 'Messages', 'pool' );
+        $item->attr_title = esc_html__( 'Messages', 'pool' );
         $item->icon = 'messages-line';
     }
     if ( ! isset( $args ) ) {
@@ -92,11 +92,11 @@ function kleo_menu_messages( $item_output = '', $item = null, $depth = 1, $args 
         $output .= $message_list;
         $style = '';
     } else {
-        $output .= '<li class="kleo-submenu-item"><span>' . esc_html__( 'There are no new messages.', 'buddyapp' ) . '</span></li>';
+        $output .= '<li class="kleo-submenu-item"><span>' . esc_html__( 'There are no new messages.', 'pool' ) . '</span></li>';
         $style = ' style="display: none;"';
     }
 
-    $output .= '<li class="footer-item"' . $style . '><a class="btn btn-link see-all-messages" href="' . $url . '">' . esc_html__( 'See all', 'buddyapp' ) . '</a></li>';
+    $output .= '<li class="footer-item"' . $style . '><a class="btn btn-link see-all-messages" href="' . $url . '">' . esc_html__( 'See all', 'pool' ) . '</a></li>';
 
     $output .= '</ul>';
 
@@ -125,7 +125,7 @@ function kleo_bp_messages_refresh( $response ) {
     if ( $message_list ) {
         $output = $message_list;
     } else {
-        $output = '<li class="kleo-submenu-item">' . esc_html__( 'There are no new messages.', 'buddyapp' ) . '</li>';
+        $output = '<li class="kleo-submenu-item">' . esc_html__( 'There are no new messages.', 'pool' ) . '</li>';
     }
 
     $response['dataMessages'] = $output;

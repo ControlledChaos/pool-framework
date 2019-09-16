@@ -201,18 +201,18 @@ if ( ! class_exists('Breadcrumb_Trail')) {
 		{
 
 			$labels = array(
-					'browse' => esc_html__('Browse:', 'buddyapp'),
-					'home' => esc_html__('Home', 'buddyapp'),
-					'error_404' => esc_html__('404 Not Found', 'buddyapp'),
-					'archives' => esc_html__('Archives', 'buddyapp'),
+					'browse' => esc_html__('Browse:', 'pool'),
+					'home' => esc_html__('Home', 'pool'),
+					'error_404' => esc_html__('404 Not Found', 'pool'),
+					'archives' => esc_html__('Archives', 'pool'),
 				/* Translators: %s is the search query. The HTML entities are opening and closing curly quotes. */
-					'search' => esc_html__('Search results for &#8220;%s&#8221;', 'buddyapp'),
+					'search' => esc_html__('Search results for &#8220;%s&#8221;', 'pool'),
 				/* Translators: %s is the page number. */
-					'paged' => esc_html__('Page %s', 'buddyapp'),
+					'paged' => esc_html__('Page %s', 'pool'),
 				/* Translators: Minute archive title. %s is the minute time format. */
-					'archive_minute' => esc_html__('Minute %s', 'buddyapp'),
+					'archive_minute' => esc_html__('Minute %s', 'pool'),
 				/* Translators: Weekly archive title. %s is the week date format. */
-					'archive_week' => esc_html__('Week %s', 'buddyapp'),
+					'archive_week' => esc_html__('Week %s', 'pool'),
 
 				/* "%s" is replaced with the translated date/time format. */
 					'archive_minute_hour' => '%s',
@@ -746,7 +746,7 @@ if ( ! class_exists('Breadcrumb_Trail')) {
 
 			/* Add the minute + hour item. */
 			if (true === $this->args['show_title'])
-				$this->items[] = sprintf($this->args['labels']['archive_minute_hour'], get_the_time(_x('g:i a', 'minute and hour archives time format', 'buddyapp')));
+				$this->items[] = sprintf($this->args['labels']['archive_minute_hour'], get_the_time(_x('g:i a', 'minute and hour archives time format', 'pool')));
 		}
 
 		/**
@@ -764,7 +764,7 @@ if ( ! class_exists('Breadcrumb_Trail')) {
 
 			/* Add the minute item. */
 			if (true === $this->args['show_title'])
-				$this->items[] = sprintf($this->args['labels']['archive_minute'], get_the_time(_x('i', 'minute archives time format', 'buddyapp')));
+				$this->items[] = sprintf($this->args['labels']['archive_minute'], get_the_time(_x('i', 'minute archives time format', 'pool')));
 		}
 
 		/**
@@ -782,7 +782,7 @@ if ( ! class_exists('Breadcrumb_Trail')) {
 
 			/* Add the hour item. */
 			if (true === $this->args['show_title'])
-				$this->items[] = sprintf($this->args['labels']['archive_hour'], get_the_time(_x('g a', 'hour archives time format', 'buddyapp')));
+				$this->items[] = sprintf($this->args['labels']['archive_hour'], get_the_time(_x('g a', 'hour archives time format', 'pool')));
 		}
 
 		/**
@@ -799,9 +799,9 @@ if ( ! class_exists('Breadcrumb_Trail')) {
 			$this->do_rewrite_front_items();
 
 			/* Get year, month, and day. */
-			$year = sprintf($this->args['labels']['archive_year'], get_the_time(_x('Y', 'yearly archives date format', 'buddyapp')));
-			$month = sprintf($this->args['labels']['archive_month'], get_the_time(_x('F', 'monthly archives date format', 'buddyapp')));
-			$day = sprintf($this->args['labels']['archive_day'], get_the_time(_x('j', 'daily archives date format', 'buddyapp')));
+			$year = sprintf($this->args['labels']['archive_year'], get_the_time(_x('Y', 'yearly archives date format', 'pool')));
+			$month = sprintf($this->args['labels']['archive_month'], get_the_time(_x('F', 'monthly archives date format', 'pool')));
+			$day = sprintf($this->args['labels']['archive_day'], get_the_time(_x('j', 'daily archives date format', 'pool')));
 
 			/* Add the year and month items. */
 			$this->items[] = '<a href="' . get_year_link(get_the_time('Y')) . '" title="' . esc_attr($year) . '">' . $year . '</a>';
@@ -829,8 +829,8 @@ if ( ! class_exists('Breadcrumb_Trail')) {
 			$this->do_rewrite_front_items();
 
 			/* Get the year and week. */
-			$year = sprintf($this->args['labels']['archive_year'], get_the_time(_x('Y', 'yearly archives date format', 'buddyapp')));
-			$week = sprintf($this->args['labels']['archive_week'], get_the_time(_x('W', 'weekly archives date format', 'buddyapp')));
+			$year = sprintf($this->args['labels']['archive_year'], get_the_time(_x('Y', 'yearly archives date format', 'pool')));
+			$week = sprintf($this->args['labels']['archive_week'], get_the_time(_x('W', 'weekly archives date format', 'pool')));
 
 			/* Add the year item. */
 			$this->items[] = '<a href="' . get_year_link(get_the_time('Y')) . '" title="' . esc_attr($year) . '">' . $year . '</a>';
@@ -857,8 +857,8 @@ if ( ! class_exists('Breadcrumb_Trail')) {
 			$this->do_rewrite_front_items();
 
 			/* Get the year and month. */
-			$year = sprintf($this->args['labels']['archive_year'], get_the_time(_x('Y', 'yearly archives date format', 'buddyapp')));
-			$month = sprintf($this->args['labels']['archive_month'], get_the_time(_x('F', 'monthly archives date format', 'buddyapp')));
+			$year = sprintf($this->args['labels']['archive_year'], get_the_time(_x('Y', 'yearly archives date format', 'pool')));
+			$month = sprintf($this->args['labels']['archive_month'], get_the_time(_x('F', 'monthly archives date format', 'pool')));
 
 			/* Add the year item. */
 			$this->items[] = '<a href="' . get_year_link(get_the_time('Y')) . '" title="' . esc_attr($year) . '">' . $year . '</a>';
@@ -885,7 +885,7 @@ if ( ! class_exists('Breadcrumb_Trail')) {
 			$this->do_rewrite_front_items();
 
 			/* Get the year. */
-			$year = sprintf($this->args['labels']['archive_year'], get_the_time(_x('Y', 'yearly archives date format', 'buddyapp')));
+			$year = sprintf($this->args['labels']['archive_year'], get_the_time(_x('Y', 'yearly archives date format', 'pool')));
 
 			/* Add the year item. */
 			if (is_paged())
@@ -1076,15 +1076,15 @@ if ( ! class_exists('Breadcrumb_Trail')) {
 
 					/* If using the %year% tag, add a link to the yearly archive. */
 					if ('%year%' == $tag)
-						$this->items[] = '<a href="' . get_year_link(get_the_time('Y', $post_id)) . '">' . sprintf($this->args['labels']['archive_year'], get_the_time(_x('Y', 'yearly archives date format', 'buddyapp'))) . '</a>';
+						$this->items[] = '<a href="' . get_year_link(get_the_time('Y', $post_id)) . '">' . sprintf($this->args['labels']['archive_year'], get_the_time(_x('Y', 'yearly archives date format', 'pool'))) . '</a>';
 
 					/* If using the %monthnum% tag, add a link to the monthly archive. */
 					elseif ('%monthnum%' == $tag)
-						$this->items[] = '<a href="' . get_month_link(get_the_time('Y', $post_id), get_the_time('m', $post_id)) . '">' . sprintf($this->args['labels']['archive_month'], get_the_time(_x('F', 'monthly archives date format', 'buddyapp'))) . '</a>';
+						$this->items[] = '<a href="' . get_month_link(get_the_time('Y', $post_id), get_the_time('m', $post_id)) . '">' . sprintf($this->args['labels']['archive_month'], get_the_time(_x('F', 'monthly archives date format', 'pool'))) . '</a>';
 
 					/* If using the %day% tag, add a link to the daily archive. */
 					elseif ('%day%' == $tag)
-						$this->items[] = '<a href="' . get_day_link(get_the_time('Y', $post_id), get_the_time('m', $post_id), get_the_time('d', $post_id)) . '">' . sprintf($this->args['labels']['archive_day'], get_the_time(_x('j', 'daily archives date format', 'buddyapp'))) . '</a>';
+						$this->items[] = '<a href="' . get_day_link(get_the_time('Y', $post_id), get_the_time('m', $post_id), get_the_time('d', $post_id)) . '">' . sprintf($this->args['labels']['archive_day'], get_the_time(_x('j', 'daily archives date format', 'pool'))) . '</a>';
 
 					/* If using the %author% tag, add a link to the post author archive. */
 					elseif ('%author%' == $tag)
@@ -1172,7 +1172,7 @@ class bbPress_Breadcrumb_Trail extends Breadcrumb_Trail
 			$this->items[] = '<a href="' . bbp_get_topic_tag_link() . '">' . bbp_get_topic_tag_name() . '</a>';
 
 			if (true === $this->args['show_title'])
-				$this->items[] = esc_html__('Edit', 'buddyapp');
+				$this->items[] = esc_html__('Edit', 'pool');
 		} /* If viewing a "view" page. */
 		elseif (bbp_is_single_view()) {
 
@@ -1196,15 +1196,15 @@ class bbPress_Breadcrumb_Trail extends Breadcrumb_Trail
 
 			/* If viewing a topic split page. */
 			if (bbp_is_topic_split() && true === $this->args['show_title'])
-				$this->items[] = esc_html__('Split', 'buddyapp');
+				$this->items[] = esc_html__('Split', 'pool');
 
 			/* If viewing a topic merge page. */
 			elseif (bbp_is_topic_merge() && true === $this->args['show_title'])
-				$this->items[] = esc_html__('Merge', 'buddyapp');
+				$this->items[] = esc_html__('Merge', 'pool');
 
 			/* If viewing a topic edit page. */
 			elseif (bbp_is_topic_edit() && true === $this->args['show_title'])
-				$this->items[] = esc_html__('Edit', 'buddyapp');
+				$this->items[] = esc_html__('Edit', 'pool');
 		} /* If viewing a single reply page. */
 		elseif (bbp_is_single_reply()) {
 
@@ -1219,7 +1219,7 @@ class bbPress_Breadcrumb_Trail extends Breadcrumb_Trail
 				$this->items[] = '<a href="' . bbp_get_reply_url($reply_id) . '">' . bbp_get_reply_title($reply_id) . '</a>';
 
 				if (true === $this->args['show_title'])
-					$this->items[] = esc_html__('Edit', 'buddyapp');
+					$this->items[] = esc_html__('Edit', 'pool');
 
 			} elseif (true === $this->args['show_title']) {
 				$this->items[] = bbp_get_reply_title($reply_id);
@@ -1246,7 +1246,7 @@ class bbPress_Breadcrumb_Trail extends Breadcrumb_Trail
 				$this->items[] = '<a href="' . bbp_get_user_profile_url() . '">' . bbp_get_displayed_user_field('display_name') . '</a>';
 
 				if (true === $this->args['show_title'])
-					$this->items[] = esc_html__('Edit', 'buddyapp');
+					$this->items[] = esc_html__('Edit', 'pool');
 			} elseif (true === $this->args['show_title']) {
 				$this->items[] = bbp_get_displayed_user_field('display_name');
 			}

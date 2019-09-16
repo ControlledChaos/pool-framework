@@ -6,7 +6,7 @@
 
 add_action('admin_menu', 'kleo_register_theme_panel_pages');
 function kleo_register_theme_panel_pages(){
-    add_theme_page( esc_html__( 'BuddyApp Theme', 'buddyapp' ), esc_html__( 'Theme Welcome', 'buddyapp' ), 'manage_options', 'buddyapp', 'kleo_theme_panel_page_welcome' );
+    add_theme_page( esc_html__( 'BuddyApp Theme', 'pool' ), esc_html__( 'Theme Welcome', 'pool' ), 'manage_options', 'pool', 'kleo_theme_panel_page_welcome' );
 }
 
 

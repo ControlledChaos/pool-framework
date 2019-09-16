@@ -26,7 +26,7 @@ function kleo_bp_nav_settings( $kleo )
     //
 
     $kleo['sec']['kleo_section_bp_icons'] = array(
-        'title' => esc_html__( 'Profile icons', 'buddyapp' ),
+        'title' => esc_html__( 'Profile icons', 'pool' ),
         'panel' => 'kleo_panel_bp',
         'priority' => 17
     );
@@ -49,7 +49,7 @@ function kleo_bp_nav_settings( $kleo )
 
                 $kleo['set'][] = array(
                     'id' => 'bp_nav_' . $nav['slug'],
-                    'title' => strip_tags($nav['name']) . esc_html__(' icon', 'buddyapp'),
+                    'title' => strip_tags($nav['name']) . esc_html__(' icon', 'pool'),
                     'type' => 'select',
                     'default' => $icon,
                     'choices' => kleo_icons_array(),
@@ -65,7 +65,7 @@ function kleo_bp_nav_settings( $kleo )
 
         $kleo['set'][] = array(
             'id' => 'bp_nav_media',
-            'title' =>  esc_html__( 'Media', 'buddyapp' ),
+            'title' =>  esc_html__( 'Media', 'pool' ),
             'type' => 'select',
             'default' => $defaults['media'],
             'choices' => kleo_icons_array(),

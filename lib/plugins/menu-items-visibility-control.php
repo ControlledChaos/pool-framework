@@ -37,7 +37,7 @@ class Kleo_Walker_Nav_Menu_Edit extends Boom_Walker_Nav_Menu_Edit  {
 		$to_add = '<p class="menu-item-mega">
 				<label for="edit-menu-item-mega-'. $item_id .'">
 						<input type="checkbox" id="edit-menu-item-mega-'. $item_id . '" value="yes" name="menu-item-mega[' . $item_id . ']"'. ( $item->mega == 'yes' ? 'checked="checked"' : '' ) .' />'
-						. esc_html__( 'Enable Mega Menu for child items.', 'buddyapp' )
+						. esc_html__( 'Enable Mega Menu for child items.', 'pool' )
 				. '</label>
 			</p>';
 

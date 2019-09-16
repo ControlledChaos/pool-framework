@@ -15,17 +15,17 @@ function kleo_wpml_settings( $kleo )
     //
 
     $kleo['sec']['kleo_section_wpml'] = array(
-        'title' => esc_html__( 'WPML', 'buddyapp' ),
+        'title' => esc_html__( 'WPML', 'pool' ),
         'priority' => 18
     );
 
     $kleo['set'][] = array(
         'id' => 'wpml_header',
-        'title' => esc_html__('Enable language switch in header', 'buddyapp'),
+        'title' => esc_html__('Enable language switch in header', 'pool'),
         'type' => 'switch',
         'default' => '1',
         'section' => 'kleo_section_wpml',
-        'description' => esc_html__('Shows the language switch in the header', 'buddyapp'),
+        'description' => esc_html__('Shows the language switch in the header', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );

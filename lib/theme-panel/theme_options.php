@@ -42,10 +42,10 @@ class Buddyapp_Admin_options {
      */
     public function __construct() {
         // Set our title
-        $this->title = esc_html__( 'BuddyApp Options', 'buddyapp' );
-        $this->menu = esc_html__( 'Theme Options', 'buddyapp' );
+        $this->title = esc_html__( 'BuddyApp Options', 'pool' );
+        $this->menu = esc_html__( 'Theme Options', 'pool' );
         $this->slug = 'buddyapp-options';
-        $this->backup = esc_html__( 'Theme Backup', 'buddyapp' );
+        $this->backup = esc_html__( 'Theme Backup', 'pool' );
         $this->backup_slug = 'buddyapp-backup';
     }
     /**
@@ -87,28 +87,28 @@ class Buddyapp_Admin_options {
             // Settings saved message
             if ( isset( $_GET['saved'] ) && $_GET['saved'] == 'true' ) {
                 printf( '<div class="updated"><p><strong>%1$s</strong></p></div>',
-                    esc_html__( 'Settings Saved!', 'buddyapp' )
+                    esc_html__( 'Settings Saved!', 'pool' )
                 );
             }
 
             // Settings reset message
             if ( isset( $_GET['reset'] ) && $_GET['reset'] == 'true' ) {
                 printf( '<div class="updated"><p><strong>%1$s</strong></p></div>',
-                    esc_html__( 'All settings were reset to default values!', 'buddyapp' )
+                    esc_html__( 'All settings were reset to default values!', 'pool' )
                 );
             }
 
             // Settings backup message
             if ( isset( $_GET['backup'] ) && $_GET['backup'] == 'ok' ) {
                 printf( '<div class="updated"><p><strong>%1$s</strong></p></div>',
-                    esc_html__( 'You made a successful backup of your theme settings!', 'buddyapp' )
+                    esc_html__( 'You made a successful backup of your theme settings!', 'pool' )
                 );
             }
 
             // Settings restore message
             if ( isset( $_GET['restore'] ) && $_GET['restore'] == 'ok' ) {
                 printf( '<div class="updated"><p><strong>%1$s</strong></p></div>',
-                    esc_html__( 'All your settings were restored to default values!', 'buddyapp' )
+                    esc_html__( 'All your settings were restored to default values!', 'pool' )
                 );
             }
 
@@ -285,7 +285,7 @@ class Buddyapp_Admin_options {
                             <tr valign="top">
                                 <th scope="row"></th>
                                 <td><input type="hidden" name="stime" value="<?php time() ?>" /></td>
-                                <td><input type="submit" class="button-primary" value="<?php esc_html_e( 'Save All Changes', 'buddyapp' ); ?>" /></td>
+                                <td><input type="submit" class="button-primary" value="<?php esc_html_e( 'Save All Changes', 'pool' ); ?>" /></td>
                             </tr>
 
                             </tbody>
@@ -302,7 +302,7 @@ class Buddyapp_Admin_options {
                                 <td>
                                     <input type="submit" class="button-secondary"
                                            onclick="return confirm('<?php esc_html_e("This will reset all settings to default values! Consider updating your custom settings before reset. Are you sure you want to reset now?", "buddyapp"); ?>')"
-                                           value="<?php esc_html_e('Reset All Options', 'buddyapp'); ?>"/>
+                                           value="<?php esc_html_e('Reset All Options', 'pool'); ?>"/>
                                 </td>
                             </tr>
 
@@ -326,33 +326,33 @@ class Buddyapp_Admin_options {
 
                     <?php
 
-                    $last_backup = ( get_option( $this->key . '_theme_backup_date') == '' ) ? esc_html__('never', 'buddyapp' ) : get_option( $this->key . '_theme_backup_date' );
+                    $last_backup = ( get_option( $this->key . '_theme_backup_date') == '' ) ? esc_html__('never', 'pool' ) : get_option( $this->key . '_theme_backup_date' );
 
                     printf( '<h3>%1$s</h3><p>%2$s<br>%3$s</p><p>%4$s: %5$s</p><p><a class="button-primary" href="%6$s">%7$s</a></p>',
-                        esc_html__( 'Backup & Restore', 'buddyapp' ),
-                        esc_html__( 'You can backup your current options and restore it back at a later time.', 'buddyapp' ),
-                        esc_html__( 'It is recommended to backup your options from time to time if you change some options but would like to keep the old settings as well in case you need it back.', 'buddyapp' ),
-                        esc_html__( 'Your last backup', 'buddyapp' ),
+                        esc_html__( 'Backup & Restore', 'pool' ),
+                        esc_html__( 'You can backup your current options and restore it back at a later time.', 'pool' ),
+                        esc_html__( 'It is recommended to backup your options from time to time if you change some options but would like to keep the old settings as well in case you need it back.', 'pool' ),
+                        esc_html__( 'Your last backup', 'pool' ),
                         $last_backup,
                         admin_url( 'admin.php?page=' . $this->backup_slug . '&backup=true' ),
-                        esc_html__( 'Backup Settings', 'buddyapp' ),
-                        esc_html__( 'You can use the below section to make local copies of your backup file (simply copy the information in a text file) or to transfer your settings to another site.', 'buddyapp' ),
-                        esc_html__( 'To import a settings file from another site just paste your backup information below and hit the "Restore Settings" button.', 'buddyapp' ),
-                        esc_html__( 'If no backup file will be pasted, the last local backup will be restored.', 'buddyapp' )
+                        esc_html__( 'Backup Settings', 'pool' ),
+                        esc_html__( 'You can use the below section to make local copies of your backup file (simply copy the information in a text file) or to transfer your settings to another site.', 'pool' ),
+                        esc_html__( 'To import a settings file from another site just paste your backup information below and hit the "Restore Settings" button.', 'pool' ),
+                        esc_html__( 'If no backup file will be pasted, the last local backup will be restored.', 'pool' )
                     );
 
                     printf( '<p>%1$s<br>%2$s</p><p>%3$s</p><p><textarea name="theme_update" class="large-text code" id="theme_update" rows="8" onClick="select(theme_update);">%4$s</textarea></p>',
-                        esc_html__( 'You can use the below section to make local copies of your backup file (simply copy the information in a text file) or to transfer your settings to another site.', 'buddyapp' ),
-                        esc_html__( 'To import a settings file from another site just paste your backup information below and hit the "Restore Settings" button.', 'buddyapp' ),
-                        esc_html__( 'If no backup file will be pasted, the last local backup will be restored.', 'buddyapp' ),
+                        esc_html__( 'You can use the below section to make local copies of your backup file (simply copy the information in a text file) or to transfer your settings to another site.', 'pool' ),
+                        esc_html__( 'To import a settings file from another site just paste your backup information below and hit the "Restore Settings" button.', 'pool' ),
+                        esc_html__( 'If no backup file will be pasted, the last local backup will be restored.', 'pool' ),
                         get_option( $this->key.'_theme_backup' ),
-                        esc_html__( 'Restore Settings', 'buddyapp' )
+                        esc_html__( 'Restore Settings', 'pool' )
                     );
 
                     ?>
 
                     <br class="clear">
-                    <p><input type="submit" class="button-secondary restore-but" id="restore-but" value="<?php esc_html_e( 'Restore Settings', 'buddyapp' ); ?>" /></p>
+                    <p><input type="submit" class="button-secondary restore-but" id="restore-but" value="<?php esc_html_e( 'Restore Settings', 'pool' ); ?>" /></p>
 
                 </form>
             </div>
@@ -600,7 +600,7 @@ class Buddyapp_Admin_options {
                     $sq_categories = get_categories('hide_empty=0');
 
                     $no_cat = ( $real_value == '' ) ? 'selected' : '';
-                    $tabs .= '<option style="margin: 2px 5px 2px 0;font-size: 12px;" value="" ' . $no_cat . '>'. esc_html__( 'Select Category', 'buddyapp' ) .'</option>'."\n";
+                    $tabs .= '<option style="margin: 2px 5px 2px 0;font-size: 12px;" value="" ' . $no_cat . '>'. esc_html__( 'Select Category', 'pool' ) .'</option>'."\n";
 
                     // Which category should be selected
                     foreach ( $sq_categories as $cat ) {
@@ -632,7 +632,7 @@ class Buddyapp_Admin_options {
                     $tabs .= '<select class="select" name="'.$option['id'].'" id="'.$option['id'].'" style="padding-right: 10px;">'."\n";
 
                     $no_page = ( $real_value == '' ) ? 'selected' : '';
-                    $tabs .= '<option style="margin: 2px 5px 2px 0;font-size: 12px;" value="" '.$no_page.'>'. esc_html__( 'Select Page', 'buddyapp' ) .'</option>'."\n";
+                    $tabs .= '<option style="margin: 2px 5px 2px 0;font-size: 12px;" value="" '.$no_page.'>'. esc_html__( 'Select Page', 'pool' ) .'</option>'."\n";
 
                     // Access WP pages via an Array
                     $sq_pages = array();
@@ -672,7 +672,7 @@ class Buddyapp_Admin_options {
                     $sq_posts = get_posts( 'numberposts=100' );
 
                     $no_post = ( $real_value == '' ) ? 'selected' : '';
-                    $tabs .= '<option style="margin: 2px 5px 2px 0;font-size: 12px;" value="" '.$no_post.'>'. esc_html__( 'Select Post', 'buddyapp' ) .'</option>'."\n";
+                    $tabs .= '<option style="margin: 2px 5px 2px 0;font-size: 12px;" value="" '.$no_post.'>'. esc_html__( 'Select Post', 'pool' ) .'</option>'."\n";
 
 
                     // Which post should be selected
@@ -707,12 +707,12 @@ class Buddyapp_Admin_options {
                     // The image upload field
                     $tabs .= '<input type="text" class="regular-text" name="'. $option['id'] .'" id="'.$option['id'].'" value="' . esc_attr( $real_value ) . '" />';
                     // The upload image button
-                    $tabs .= '<input type="button" id="'. $option['id'] .'-button" class="sq-upload-button button" value="'. esc_html__( 'Upload', 'buddyapp' ) .'" />'."\n";
+                    $tabs .= '<input type="button" id="'. $option['id'] .'-button" class="sq-upload-button button" value="'. esc_html__( 'Upload', 'pool' ) .'" />'."\n";
 
                     // The remove image button
                     if ( $real_value ) {
 
-                        $tabs .= '<input type="button" id="'. $option['id'] .'-remove" class="sq-remove-button button" value="'. esc_html__( 'Remove', 'buddyapp' ) .'" />'."\n";
+                        $tabs .= '<input type="button" id="'. $option['id'] .'-remove" class="sq-remove-button button" value="'. esc_html__( 'Remove', 'pool' ) .'" />'."\n";
                         $tabs .= '<div id="'. $option['id'] .'-preview">';
                         $tabs .= '<img src="'.$real_value.'" style="max-width:300px;height:auto;margin-top:10px;border:3px solid #fff;" alt="" />'."\n";
                         $tabs .= '</div>';

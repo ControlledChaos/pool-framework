@@ -33,7 +33,7 @@ $disable_element = '';
 $sq_enable_masonry = $no_padding = '';
 
 if ( ! function_exists( 'vc_map_get_attributes' ) ) {
-	esc_html_e( 'Please update Visual composer to latest version', 'buddyapp' );
+	esc_html_e( 'Please update Visual composer to latest version', 'pool' );
 } else {
 
 	$output = $after_output = '';

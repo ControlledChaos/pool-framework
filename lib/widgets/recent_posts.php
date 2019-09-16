@@ -11,9 +11,9 @@ class Kleo_Recent_Posts_widget extends WP_Widget {
 	function __construct() {
 	
 		$widget_ops = array( 
-			'description' => esc_html__( 'Recent posts with thumbnails widget.', 'buddyapp' )
+			'description' => esc_html__( 'Recent posts with thumbnails widget.', 'pool' )
 		);
-		parent::__construct( 'kleo_recent_posts', esc_html__('(BuddyApp) Recent posts','buddyapp'), $widget_ops );
+		parent::__construct( 'kleo_recent_posts', esc_html__('(BuddyApp) Recent posts','pool'), $widget_ops );
 	}
 
 	/**
@@ -119,11 +119,11 @@ class Kleo_Recent_Posts_widget extends WP_Widget {
 	?>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'buddyapp' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'pool' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo $title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Limit:', 'buddyapp' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Limit:', 'pool' ); ?></label>
 			<select class="widefat" name="<?php echo $this->get_field_name( 'limit' ); ?>" id="<?php echo $this->get_field_id( 'limit' ); ?>">
 				<?php for ( $i=1; $i<=20; $i++ ) { ?>
 					<option <?php selected( $limit, $i ) ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -131,24 +131,24 @@ class Kleo_Recent_Posts_widget extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'length' ) ); ?>"><?php esc_html_e( 'Excerpt length:', 'buddyapp' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'length' ) ); ?>"><?php esc_html_e( 'Excerpt length:', 'pool' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'length' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'length' ) ); ?>" type="text" value="<?php echo $length; ?>" />
 		</p>
 
 		<?php if( current_theme_supports( 'post-thumbnails' ) ) { ?>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'thumb' ) ); ?>"><?php esc_html_e( 'Display Author Image?', 'buddyapp' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'thumb' ) ); ?>"><?php esc_html_e( 'Display Author Image?', 'pool' ); ?></label>
 				<input id="<?php echo $this->get_field_id( 'thumb' ); ?>" name="<?php echo $this->get_field_name( 'thumb' ); ?>" type="checkbox" value="1" <?php checked( '1', $thumb ); ?> />&nbsp;
 			</p>
 
 		<?php } ?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'cat' ) ); ?>"><?php esc_html_e( 'Show from category: ' , 'buddyapp' ); ?></label>
-			<?php wp_dropdown_categories( array( 'name' => $this->get_field_name( 'cat' ), 'show_option_all' => esc_html__( 'All categories' , 'buddyapp' ), 'hide_empty' => 1, 'hierarchical' => 1, 'selected' => $cat ) ); ?>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'cat' ) ); ?>"><?php esc_html_e( 'Show from category: ' , 'pool' ); ?></label>
+			<?php wp_dropdown_categories( array( 'name' => $this->get_field_name( 'cat' ), 'show_option_all' => esc_html__( 'All categories' , 'pool' ), 'hide_empty' => 1, 'hierarchical' => 1, 'selected' => $cat ) ); ?>
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'post_type' ) ); ?>"><?php esc_html_e( 'Choose the Post Type: ' , 'buddyapp' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'post_type' ) ); ?>"><?php esc_html_e( 'Choose the Post Type: ' , 'pool' ); ?></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'post_type' ); ?>" name="<?php echo $this->get_field_name( 'post_type' ); ?>">
 				<?php foreach ( get_post_types( '', 'objects' ) as $post_type ) { ?>
 					<option value="<?php echo esc_attr( $post_type->name ); ?>" <?php selected( $instance['post_type'], $post_type->name ); ?>><?php echo esc_html( $post_type->labels->singular_name ); ?></option>

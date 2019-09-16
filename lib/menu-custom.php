@@ -293,11 +293,11 @@ if ( !class_exists('Kleo_Walker_Nav_Menu_Edit') ) {
 
             $to_add .= '<p class="menu-item-extra description description-wide">'
                 . '<label for="edit-menu-item-extra-' . $item_id . '">'
-                . esc_html__( 'Extra Data to show under a menu item', 'buddyapp' )
+                . esc_html__( 'Extra Data to show under a menu item', 'pool' )
                 . ' <br><textarea class="widefat edit-menu-item-extra" id="edit-menu-item-extra-'. $item_id . '" name="menu-item-extra[' . $item_id . ']">'
                 . $item->extra
                 . '</textarea>'
-                . '<span class="description">' . esc_html__( 'You can add shortcodes here and all the data will be added in a dropdown to the current item', 'buddyapp' ) . '</span>'
+                . '<span class="description">' . esc_html__( 'You can add shortcodes here and all the data will be added in a dropdown to the current item', 'pool' ) . '</span>'
                 . '</label>'
                 . '</p>';
             ob_start();

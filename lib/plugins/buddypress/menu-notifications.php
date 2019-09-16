@@ -10,11 +10,11 @@ function kleo_bp_notif_settings( $kleo )
 
     $kleo['set'][] = array(
         'id' => 'bp_notif_interval',
-        'title' => esc_html__('AJAX refresh interval', 'buddyapp'),
+        'title' => esc_html__('AJAX refresh interval', 'pool'),
         'type' => 'text',
         'default' => '30000',
         'section' => 'kleo_section_bp',
-        'description' => esc_html__('Set to 0(zero) if you want to disable AJAX checks. Expressed in millisecond, 30000 is 30 seconds', 'buddyapp'),
+        'description' => esc_html__('Set to 0(zero) if you want to disable AJAX checks. Expressed in millisecond, 30000 is 30 seconds', 'pool'),
         'customizer' => true,
         'transport' => 'postMessage'
     );
@@ -28,7 +28,7 @@ function kleo_bp_notif_settings( $kleo )
 add_filter('kleo_nav_menu_items', 'kleo_add_notifications_nav_item' );
 function kleo_add_notifications_nav_item( $menu_items ) {
   $menu_items[] = array(
-    'name' => esc_html__( 'Live Notifications', 'buddyapp' ),
+    'name' => esc_html__( 'Live Notifications', 'pool' ),
     'slug' => 'notifications',
     'link' => '#',
   );
@@ -61,8 +61,8 @@ function kleo_menu_notifications( $item_output = '', $item = null, $depth = 1, $
 
     if( ! isset( $item ) ) {
         $item = new stdClass();
-        $item->title = esc_html__( 'Notifications', 'buddyapp' );
-        $item->attr_title = esc_html__( 'Notifications', 'buddyapp' );
+        $item->title = esc_html__( 'Notifications', 'pool' );
+        $item->attr_title = esc_html__( 'Notifications', 'pool' );
         $item->icon = 'notification-line';
     }
     if ( ! isset( $args ) ) {
@@ -104,7 +104,7 @@ function kleo_menu_notifications( $item_output = '', $item = null, $depth = 1, $
         }
     }
     else {
-        $output .= '<li class="kleo-submenu-item"><span>' . esc_html__( 'No new notifications' , 'buddyapp' ) . '</span></li>';
+        $output .= '<li class="kleo-submenu-item"><span>' . esc_html__( 'No new notifications' , 'pool' ) . '</span></li>';
     }
 
     if ( ! empty( $notifications ) ) {
@@ -112,7 +112,7 @@ function kleo_menu_notifications( $item_output = '', $item = null, $depth = 1, $
     } else {
         $style = ' style="display: none;"';
     }
-    $output .= '<li class="footer-item"' . $style . '><a class="btn btn-link mark-as-read" href="#">' . esc_html__( 'Mark all as read', 'buddyapp' ) . '</a></li>';
+    $output .= '<li class="footer-item"' . $style . '><a class="btn btn-link mark-as-read" href="#">' . esc_html__( 'Mark all as read', 'pool' ) . '</a></li>';
 
     $output .= '</ul>';
 
@@ -136,7 +136,7 @@ function kleo_bp_notification_mark_read() {
   $notifications = bp_notifications_get_notifications_for_user( bp_loggedin_user_id(), 'object' );
   $count         = ! empty( $notifications ) ? count( $notifications ) : 0;
   $response['count']  = $count;
-  $response['empty']  = '<li class="kleo-submenu-item">' . esc_html__( 'No new notifications' , 'buddyapp' ) . '</li>';
+  $response['empty']  = '<li class="kleo-submenu-item">' . esc_html__( 'No new notifications' , 'pool' ) . '</li>';
 
   echo json_encode( $response );
   exit;
@@ -169,7 +169,7 @@ function kleo_bp_notifications_refresh( $response ) {
             $output .='</li>';
         }
     } else {
-        $output .= '<li class="kleo-submenu-item">' . esc_html__( 'No new notifications' , 'buddyapp' ) . '</li>';
+        $output .= '<li class="kleo-submenu-item">' . esc_html__( 'No new notifications' , 'pool' ) . '</li>';
     }
     $response['dataNotif'] = $output;
     $response['countNotif']  = $count;

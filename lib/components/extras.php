@@ -14,7 +14,7 @@ function kleo_extras_settings( $kleo )
     //
 
     $kleo['sec']['kleo_section_misc'] = array(
-        'title' => esc_html__('Miscellaneous', 'buddyapp'),
+        'title' => esc_html__('Miscellaneous', 'pool'),
         'priority' => 50
     );
 
@@ -26,20 +26,20 @@ function kleo_extras_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'maintenance_mode',
         'type' => 'switch',
-        'title' => esc_html__('Maintenance Enabled', 'buddyapp'),
+        'title' => esc_html__('Maintenance Enabled', 'pool'),
         'default' => 0,
         'section' => 'kleo_section_misc',
-        'description' => esc_html__('WARNING: It will make the site available to admins only', 'buddyapp'),
+        'description' => esc_html__('WARNING: It will make the site available to admins only', 'pool'),
         'customizer' => false,
     );
 
     $kleo['set'][] = array(
         'id' => 'maintenance_msg',
         'type' => 'textarea',
-        'title' =>  esc_html__('Maintenance Message', 'buddyapp'),
+        'title' =>  esc_html__('Maintenance Message', 'pool'),
         'default' => 'We are not available for the moment!!!',
         'section' => 'kleo_section_misc',
-        'description' => esc_html__('The message that is visible for guests if you enabled maintenance', 'buddyapp'),
+        'description' => esc_html__('The message that is visible for guests if you enabled maintenance', 'pool'),
         'customizer' => false,
         'condition' => array( 'maintenance_mode', 1 )
     );
@@ -47,20 +47,20 @@ function kleo_extras_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'admin_bar',
         'type' => 'switch',
-        'title' => esc_html__('Admin bar visible', 'buddyapp'),
+        'title' => esc_html__('Admin bar visible', 'pool'),
         'default' => '1',
         'section' => 'kleo_section_misc',
-        'description' => esc_html__('If by default the Admin menu bar is enabled', 'buddyapp'),
+        'description' => esc_html__('If by default the Admin menu bar is enabled', 'pool'),
         'customizer' => false,
     );
 
     $kleo['set'][] = array(
         'id' => 'page_comments_disable',
         'type' => 'switch',
-        'title' => esc_html__('Disable page comments', 'buddyapp'),
+        'title' => esc_html__('Disable page comments', 'pool'),
         'default' => '0',
         'section' => 'kleo_section_misc',
-        'description' => esc_html__('Force disable comments on all pages', 'buddyapp'),
+        'description' => esc_html__('Force disable comments on all pages', 'pool'),
         'customizer' => false,
     );
 
@@ -68,30 +68,30 @@ function kleo_extras_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'quick_css',
         'type' => 'textarea',
-        'title' =>  esc_html__('Quick CSS', 'buddyapp'),
+        'title' =>  esc_html__('Quick CSS', 'pool'),
         'default' => '',
         'section' => 'kleo_section_misc',
-        'description' => esc_html__('Quickly add small css codes in this section to apply to the whole site.', 'buddyapp'),
+        'description' => esc_html__('Quickly add small css codes in this section to apply to the whole site.', 'pool'),
         'customizer' => false,
     );
 
     $kleo['set'][] = array(
         'id' => 'quick_js',
         'type' => 'textarea',
-        'title' =>  esc_html__('Quick Javascript', 'buddyapp'),
+        'title' =>  esc_html__('Quick Javascript', 'pool'),
         'default' => '',
         'section' => 'kleo_section_misc',
-        'description' => esc_html__('Small JS code to load in the footer of your site. You need to include the script tags.', 'buddyapp'),
+        'description' => esc_html__('Small JS code to load in the footer of your site. You need to include the script tags.', 'pool'),
         'customizer' => false,
     );
 
     $kleo['set'][] = array(
         'id' => 'dev_mode',
         'type' => 'switch',
-        'title' => esc_html__( 'Development mode', 'buddyapp' ),
+        'title' => esc_html__( 'Development mode', 'pool' ),
         'default' => 0,
         'section' => 'kleo_section_misc',
-        'description' => esc_html__('This will load css/js files not minified.', 'buddyapp'),
+        'description' => esc_html__('This will load css/js files not minified.', 'pool'),
         'customizer' => false,
     );
 

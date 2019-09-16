@@ -11,18 +11,18 @@ function kleo_page_title_settings( $kleo )
 {
 
     $kleo['panels']['kleo_panel_page_title'] = array(
-        'title' => esc_html__('Page title', 'buddyapp'),
-        'description' => esc_html__('Page title section settings', 'buddyapp'),
+        'title' => esc_html__('Page title', 'pool'),
+        'description' => esc_html__('Page title section settings', 'pool'),
         'priority' => 15
     );
 
     $kleo['sec']['kleo_section_page_title'] = array(
-        'title' => esc_html__('General settings', 'buddyapp'),
+        'title' => esc_html__('General settings', 'pool'),
         'panel' => 'kleo_panel_page_title',
         'priority' => 15
     );
     $kleo['sec']['kleo_section_page_title_styling'] = array(
-        'title' => esc_html__('Styling options', 'buddyapp'),
+        'title' => esc_html__('Styling options', 'pool'),
         'panel' => 'kleo_panel_page_title',
         'priority' => 15
     );
@@ -31,10 +31,10 @@ function kleo_page_title_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'page_title_enable',
         'type' => 'switch',
-        'title' => esc_html__('Enable Page Title section', 'buddyapp'),
+        'title' => esc_html__('Enable Page Title section', 'pool'),
         'default' => '1',
         'section' => 'kleo_section_page_title',
-        'description' => esc_html__('Show the page title section on your site', 'buddyapp'),
+        'description' => esc_html__('Show the page title section on your site', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -42,10 +42,10 @@ function kleo_page_title_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'page_title_title',
         'type' => 'switch',
-        'title' => esc_html__('Show Page Title', 'buddyapp'),
+        'title' => esc_html__('Show Page Title', 'pool'),
         'default' => '1',
         'section' => 'kleo_section_page_title',
-        'description' => esc_html__('Show the page title on your site', 'buddyapp'),
+        'description' => esc_html__('Show the page title on your site', 'pool'),
         'customizer' => true,
         'transport' => 'refresh',
         'condition' => array('page_title_enable', '1')
@@ -54,7 +54,7 @@ function kleo_page_title_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'page_title_tagline',
         'type' => 'text',
-        'title' => esc_html__('Tag line', 'buddyapp'),
+        'title' => esc_html__('Tag line', 'pool'),
         'default' => 'Your small tag line here',
         'section' => 'kleo_section_page_title',
         'customizer' => true,
@@ -67,10 +67,10 @@ function kleo_page_title_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'page_title_breadcrumb',
         'type' => 'switch',
-        'title' => esc_html__('Show Breadcrumb', 'buddyapp'),
+        'title' => esc_html__('Show Breadcrumb', 'pool'),
         'default' => '1',
         'section' => 'kleo_section_page_title',
-        'description' => esc_html__('Show breadcrumb on your site', 'buddyapp'),
+        'description' => esc_html__('Show breadcrumb on your site', 'pool'),
         'customizer' => true,
         'transport' => 'refresh',
         'condition' => array('page_title_enable', '1')

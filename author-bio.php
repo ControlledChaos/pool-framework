@@ -9,7 +9,7 @@
 ?>
 
 <div class="author-info">
-	<h2 class="author-heading"><?php esc_html_e( 'Posted by', 'buddyapp' ); ?></h2>
+	<h2 class="author-heading"><?php esc_html_e( 'Posted by', 'pool' ); ?></h2>
 	<div class="author-avatar">
 		<?php
 		/**
@@ -31,7 +31,7 @@
 		<p class="author-bio">
 			<?php the_author_meta( 'description' ); ?>
 			<a class="author-link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
-				<?php printf( esc_html__( 'View all posts by %s', 'buddyapp' ), get_the_author() ); ?>
+				<?php printf( esc_html__( 'View all posts by %s', 'pool' ), get_the_author() ); ?>
 			</a>
 		</p><!-- .author-bio -->
 

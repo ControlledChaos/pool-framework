@@ -11,9 +11,9 @@ class SQ_Social_Share_widget extends WP_Widget {
 	function __construct() {
 
 		$widget_ops = array(
-			'description' => esc_html__( 'Social share icons.', 'buddyapp' )
+			'description' => esc_html__( 'Social share icons.', 'pool' )
 		);
-		parent::__construct( 'kleo_social_share', esc_html__('(BuddyApp) Social Share','buddyapp'), $widget_ops );
+		parent::__construct( 'kleo_social_share', esc_html__('(BuddyApp) Social Share','pool'), $widget_ops );
 
 		add_action('load-widgets.php', array($this, 'scripts_load') );
 		add_action('customize_controls_enqueue_scripts', array($this, 'scripts_load') );
@@ -161,12 +161,12 @@ class SQ_Social_Share_widget extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'buddyapp' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'pool' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo $title; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><?php _e( 'Style', 'buddyapp' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><?php _e( 'Style', 'pool' ); ?></label>
 			<br>
 			<select id="<?php echo $this->get_field_id( 'style' ); ?>" name="<?php echo $this->get_field_name( 'style' ); ?>">
 				<option value="">Default</option>
@@ -175,13 +175,13 @@ class SQ_Social_Share_widget extends WP_Widget {
 		</p>
 
 		<p class="bg-section<?php echo $bg_class; ?>">
-			<label for="<?php echo $this->get_field_id( 'background_color' ); ?>"><?php _e( 'Background Color', 'buddyapp' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'background_color' ); ?>"><?php _e( 'Background Color', 'pool' ); ?></label>
 			<br>
 			<input class="color-picker" type="text" id="<?php echo $this->get_field_id( 'background_color' ); ?>" name="<?php echo $this->get_field_name( 'background_color' ); ?>" value="<?php echo esc_attr( $background_color ); ?>" />
 		</p>
 
 		<p class="bg-section<?php echo $bg_class; ?>">
-			<label for="<?php echo $this->get_field_id( 'background_image' ); ?>"><?php _e( 'Background Image', 'buddyapp' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'background_image' ); ?>"><?php _e( 'Background Image', 'pool' ); ?></label>
 			<br>
 			<input type="text" class="widefat image-url" id="<?php echo $this->get_field_id( 'background_image' ); ?>" name="<?php echo $this->get_field_name( 'background_image' ); ?>" value="<?php echo esc_attr( $background_image ); ?>" />
 			<span class="img-preview" id="<?php echo $this->get_field_id( 'preview_image' ); ?>">
@@ -195,7 +195,7 @@ class SQ_Social_Share_widget extends WP_Widget {
 
 		<div>
 
-			<label for="<?php echo esc_attr( $this->get_field_id( 'platforms' ) ); ?>"><?php esc_html_e( 'Platforms:', 'buddyapp' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'platforms' ) ); ?>"><?php esc_html_e( 'Platforms:', 'pool' ); ?></label>
 			<br>
 			<?php if($platforms) :?>
 			<?php $i = 0; foreach ( $platforms as $platform ) : ?>
@@ -219,7 +219,7 @@ class SQ_Social_Share_widget extends WP_Widget {
 			<select style="max-width: 66%;" id="<?php echo esc_attr( $this->get_field_id( 'icons' ) ); ?>">
 				<?php echo $icon_opts; ?>
 			</select>
-			<a href="#" class="sq-clone-me <?php echo esc_attr( $this->get_field_id( 'addnew' ) ); ?>"><?php _e( "Add platform", 'buddyapp' );?></a>
+			<a href="#" class="sq-clone-me <?php echo esc_attr( $this->get_field_id( 'addnew' ) ); ?>"><?php _e( "Add platform", 'pool' );?></a>
 		</p>
 
 		<script>

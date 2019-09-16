@@ -129,12 +129,12 @@ function kleo_generate_dynamic_css() {
             // do nothing
         } elseif (is_admin()) {
             echo '<div class="error settings-error">';
-            esc_html_e('Cannot write dynamic css file. Please check file permissions with hosting', 'buddyapp');
+            esc_html_e('Cannot write dynamic css file. Please check file permissions with hosting', 'pool');
             echo '</div>';
         }
 
     } catch ( Exception $e ) {
-        esc_html_e( 'Something went wrong when compiling less files.', 'buddyapp');
+        esc_html_e( 'Something went wrong when compiling less files.', 'pool');
         echo esc_html( $e->getMessage() );
     }
 

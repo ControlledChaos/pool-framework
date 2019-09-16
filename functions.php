@@ -6,248 +6,61 @@
  * @since Next 1.0
  */
 
-/***************************************************
-:: Load Kleo framework
-***************************************************/
-
+/**
+ * Load Kleo framework
+ */
 define( 'KLEO_THEME_VERSION', '1.5.8' );
 
 if ( ! isset( $content_width ) ) {
     $content_width = 1200;
 }
 
-require_once( trailingslashit( get_template_directory() ) . 'kleo-framework/kleo.php' );
+require_once get_parent_theme_file_path( '/kleo-framework/kleo.php' );
 
-//set some theme configuration options
-Kleo::init_config( array(
+// Set some theme configuration options.
+Kleo::init_config( [
     'styling_variables' => array(
-        'background-color' => esc_html__( 'Background color', 'buddyapp' ),
-        'border-color' => esc_html__( 'Border color', 'buddyapp' ),
-        'heading-color' => esc_html__( 'Heading color', 'buddyapp' ),
-        'text-color' =>     esc_html__( 'Text color', 'buddyapp' ),
-        'link-color' => esc_html__( 'Link color', 'buddyapp' ),
-        'hover-link-color' => esc_html__( 'Hover Link color', 'buddyapp' ),
-        'accent-color' => esc_html__( 'Accent color', 'buddyapp' )
+        'background-color' => esc_html__( 'Background color', 'pool' ),
+        'border-color'     => esc_html__( 'Border color', 'pool' ),
+        'heading-color'    => esc_html__( 'Heading color', 'pool' ),
+        'text-color'       => esc_html__( 'Text color', 'pool' ),
+        'link-color'       => esc_html__( 'Link color', 'pool' ),
+        'hover-link-color' => esc_html__( 'Hover Link color', 'pool' ),
+        'accent-color'     => esc_html__( 'Accent color', 'pool' )
     ),
-    //Post image sizes for carousels and galleries
-    'post_gallery_img_width' => 600,
-    'post_gallery_img_height' => 400,
+    // Post image sizes for carousels and galleries.
+    'post_gallery_img_width'  => 640,
+    'post_gallery_img_height' => 480,
 
-    //page templates
-    'tpl_map' => array(
-        'page-templates/full-width.php' => 'full',
-        'page-templates/left-sidebar.php' => 'left',
+    // Page templates.
+    'tpl_map' => [
+        'page-templates/full-width.php'    => 'full',
+        'page-templates/left-sidebar.php'  => 'left',
         'page-templates/right_sidebar.php' => 'right',
-    ),
-    'container_class' => 'container-fluid',
-    'menu_icon_default' => 'buddyapp-default',
-    'footer_text' => 'Proudly powered by WordPress. Developed by <a target="_blank" href="http://7thqueen.com">SeventhQueen</a>',
+	],
+    'container_class'       => 'container-fluid',
+    'menu_icon_default'     => 'buddyapp-default',
+    'footer_text'           => '',
     'default_font_headings' => 'Montserrat',
-    'default_font_text' => 'Open Sans',
-	'blog_meta_defaults' => array( 'date', 'author_link', 'categories', 'tags', 'comments'),
-	'blog_meta_elements' => array(
-		'avatar' => 'Author Avatar',
+    'default_font_text'     => 'Open Sans',
+	'blog_meta_defaults'    => [
+		'date',
+		'author_link',
+		'categories',
+		'tags',
+		'comments'
+	],
+	'blog_meta_elements' => [
+		'avatar'      => 'Author Avatar',
 		'author_link' => 'Author name',
-		'date' => 'Date',
-		'message' => 'Message Link',
-		'categories' => 'Categories',
-		'tags' => 'Tags',
-		'comments' => 'Comments'
-	)
+		'date'        => 'Date',
+		'message'     => 'Message Link',
+		'categories'  => 'Categories',
+		'tags'        => 'Tags',
+		'comments'    => 'Comments'
+	]
 
-));
-
-
-
-
-/***************************************************
-:: Theme Required plugins
- ***************************************************/
-
-add_action( 'tgmpa_register', 'kleo_required_plugins' );
-
-function kleo_required_plugins() {
-
-    /**
-     * Array of plugin arrays. Required keys are name and slug.
-     * If the source is NOT from the .org repo, then source is also required.
-     */
-    $plugins = array(
-        array(
-            'name' => 'BuddyPress', // The plugin name
-            'slug' => 'buddypress', // The plugin slug (typically the folder name)
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '2.3', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-        array(
-            'name' => 'bbPress', // The plugin name
-            'slug' => 'bbpress', // The plugin slug (typically the folder name)
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-        array(
-            'name' => 'Envato Market - Auto Theme Updates', // The plugin name
-            'slug' => 'envato-market', // The plugin slug (typically the folder name)
-            'source' => 'https://envato.github.io/wp-envato-market/dist/envato-market.zip', // The plugin source
-            'required' => true, // If false, the plugin is only 'recommended' instead of required
-            'version' => '2.0.1', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-        array(
-            'name' => 'Visual Composer', // The plugin name
-            'slug' => 'js_composer', // The plugin slug (typically the folder name)
-            'source' => get_template_directory() . '/lib/inc/js_composer.zip', // The plugin source
-            'required' => true, // If false, the plugin is only 'recommended' instead of required
-            'version' => '5.4.7', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-        array(
-            'name' => 'Restrict my Site', // The plugin name
-            'slug' => 'restrict-my-site', // The plugin slug (typically the folder name)
-            'source' => get_template_directory() . '/lib/inc/restrict-my-site.zip', // The plugin source
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '1.0.1', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-        array(
-            'name' => 'Easy Knowledge Base', // The plugin name
-            'slug' => 'easy-kb', // The plugin slug (typically the folder name)
-            'source' => get_template_directory() . '/lib/inc/easy-kb.zip', // The plugin source
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '1.0', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-        array(
-            'name' => 'rtMedia', // The plugin name
-            'slug' => 'buddypress-media', // The plugin slug (typically the folder name)
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-        array(
-            'name' => 'Contact Form 7', // The plugin name
-            'slug' => 'contact-form-7', // The plugin slug (typically the folder name)
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-        array(
-            'name' => 'Charts and Graphs', // The plugin name
-            'slug' => 'visualizer', // The plugin slug (typically the folder name)
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-        array(
-            'name' => 'Wise Chat', // The plugin name
-            'slug' => 'wise-chat', // The plugin slug (typically the folder name)
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-
-        array(
-            'name' => 'BuddyDrive - File sharing', // The plugin name
-            'slug' => 'buddydrive', // The plugin slug (typically the folder name)
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-        array(
-            'name' => 'WP Polls', // The plugin name
-            'slug' => 'wp-polls', // The plugin slug (typically the folder name)
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-        array(
-            'name' => 'Events Manager', // The plugin name
-            'slug' => 'events-manager', // The plugin slug (typically the folder name)
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-        array(
-            'name' => 'Cleverness To-Do List', // The plugin name
-            'slug' => 'cleverness-to-do-list', // The plugin slug (typically the folder name)
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),
-
-    );
-
-    /**
-     * Array of configuration settings. Amend each line as needed.
-     * If you want the default strings to be available under your own theme domain,
-     * leave the strings uncommented.
-     */
-    $config = array(
-        'id'                => 'tgmpa-kleo-' . KLEO_THEME_VERSION,
-        //'domain'            => $theme_text_domain,           // Text domain - likely want to be the same as your theme.
-        'default_path'      => '',                           // Default absolute path to pre-packaged plugins
-        //'parent_slug'  => '',         // Default parent menu slug
-        //'parent_url_slug'   => 'themes.php',         // Default parent URL slug
-        'menu'              => 'install-required-plugins',   // Menu slug
-        'has_notices'       => true,                         // Show admin notices or not
-        'is_automatic'      => true,            // Automatically activate plugins after installation or not
-        'message'           => '',               // Message to output right before the plugins table
-        'strings'           => array(
-            'page_title'                                => esc_html__( 'Install Required Plugins', 'buddyapp' ),
-            'menu_title'                                => esc_html__( 'Install Plugins', 'buddyapp' ),
-            'installing'                                => esc_html__( 'Installing Plugin: %s', 'buddyapp' ), // %1$s = plugin name
-            'oops'                                      => esc_html__( 'Something went wrong with the plugin API.', 'buddyapp' ),
-            'notice_can_install_required'               => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.','buddyapp' ), // %1$s = plugin name(s)
-            'notice_can_install_recommended'            => _n_noop( 'This theme recommends the following plugin: %1$s.', 'This theme recommends the following plugins: %1$s.','buddyapp' ), // %1$s = plugin name(s)
-            'notice_cannot_install'                     => _n_noop( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', 'Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed.','buddyapp' ), // %1$s = plugin name(s)
-            'notice_can_activate_required'              => _n_noop( 'The following required plugin is currently inactive: %1$s.', 'The following required plugins are currently inactive: %1$s.','buddyapp' ), // %1$s = plugin name(s)
-            'notice_can_activate_recommended'           => _n_noop( 'The following recommended plugin is currently inactive: %1$s.', 'The following recommended plugins are currently inactive: %1$s.','buddyapp' ), // %1$s = plugin name(s)
-            'notice_cannot_activate'                    => _n_noop( 'Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated.', 'Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated.','buddyapp' ), // %1$s = plugin name(s)
-            'notice_ask_to_update'                      => _n_noop( 'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.', 'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.','buddyapp' ), // %1$s = plugin name(s)
-            'notice_cannot_update'                      => _n_noop( 'Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated.', 'Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated.','buddyapp' ), // %1$s = plugin name(s)
-            'install_link'                              => _n_noop( 'Begin installing plugin', 'Begin installing plugins', 'buddyapp' ),
-            'activate_link'                             => _n_noop( 'Activate installed plugin', 'Activate installed plugins', 'buddyapp' ),
-            'return'                                    => esc_html__( 'Return to Required Plugins Installer', 'buddyapp', 'buddyapp' ),
-            'plugin_activated'                          => esc_html__( 'Plugin activated successfully.', 'buddyapp' ),
-            'complete'                                  => esc_html__( 'All plugins installed and activated successfully. %s', 'buddyapp' ) // %1$s = dashboard link
-        )
-    );
-
-    tgmpa( $plugins, $config );
-
-}
-
-
+] );
 
 /**
  * Sets up theme defaults and registers the various WordPress features
@@ -267,7 +80,7 @@ function kleo_setup() {
 	 * Makes theme available for translation.
 	 * Translations can be added to the /languages/ directory.
 	 */
-	load_theme_textdomain( 'buddyapp', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'pool', get_template_directory() . '/languages' );
 
 	/* This theme styles the visual editor with editor-style.css to match the theme style. */
 	add_editor_style();
@@ -284,9 +97,9 @@ function kleo_setup() {
 	) );
 
 	/* This theme uses wp_nav_menu() in two locations. */
-	register_nav_menu( 'primary', esc_html__( 'Main Menu (Side)', 'buddyapp' ) );
-    register_nav_menu( 'top-left', esc_html__( 'Top Left Header Menu', 'buddyapp' ) );
-    register_nav_menu( 'top-right', esc_html__( 'Top Right Header Menu', 'buddyapp' ) );
+	register_nav_menu( 'primary', esc_html__( 'Main Menu (Side)', 'pool' ) );
+    register_nav_menu( 'top-left', esc_html__( 'Top Left Header Menu', 'pool' ) );
+    register_nav_menu( 'top-right', esc_html__( 'Top Right Header Menu', 'pool' ) );
 
 
     /* This theme uses a custom image size for featured images, displayed on "standard" posts. */
@@ -319,14 +132,9 @@ function kleo_setup() {
 }
 add_action( 'after_setup_theme', 'kleo_setup' );
 
-
-
-/***************************************************
-:: Load Theme files
- ***************************************************/
-
-add_action( 'after_setup_theme', 'kleo_theme_functions', 12 );
-
+/**
+ * Load Theme files
+ */
 function kleo_theme_functions() {
 
     // Resize on the fly
@@ -396,7 +204,7 @@ function kleo_theme_functions() {
     }
 
 }
-
+add_action( 'after_setup_theme', 'kleo_theme_functions', 12 );
 
 
 /***************************************************
@@ -491,9 +299,9 @@ if ( ! function_exists( 'kleo_widgets_init' ) ) {
     function kleo_widgets_init()
     {
         register_sidebar(array(
-            'name' => esc_html__('Main Sidebar', 'buddyapp'),
+            'name' => esc_html__('Main Sidebar', 'pool'),
             'id' => 'sidebar-1',
-            'description' => esc_html__('Main Sidebar', 'buddyapp'),
+            'description' => esc_html__('Main Sidebar', 'pool'),
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget' => '</div>',
             'before_title' => '<h4 class="widget-title">',
@@ -501,9 +309,9 @@ if ( ! function_exists( 'kleo_widgets_init' ) ) {
         ));
 
         register_sidebar(array(
-            'name' => esc_html__('Side menu Area', 'buddyapp'),
+            'name' => esc_html__('Side menu Area', 'pool'),
             'id' => 'side',
-            'description' => esc_html__('Side Menu Area', 'buddyapp'),
+            'description' => esc_html__('Side Menu Area', 'pool'),
             'before_widget' => '<div id="%1$s" class="menu-section widget %2$s">',
             'after_widget' => '</div>',
             'before_title' => '<p class="menu-section-header"><span>',
@@ -581,8 +389,8 @@ if ( ! function_exists( 'kleo_frontend_files' ) ) :
 
 		$obj_array = array(
             'ajaxurl' =>  admin_url('admin-ajax.php'),
-            'loadingMessage' => '<i class="icon-refresh animate-spin"></i> ' . esc_html__( 'Sending info, please wait...', 'buddyapp' ),
-            'errorMessage' => esc_html__('Sorry, an error occurred. Try again later.', 'buddyapp')
+            'loadingMessage' => '<i class="icon-refresh animate-spin"></i> ' . esc_html__( 'Sending info, please wait...', 'pool' ),
+            'errorMessage' => esc_html__('Sorry, an error occurred. Try again later.', 'pool')
         );
         $obj_array = apply_filters( 'kleo_localize_app', $obj_array );
 
@@ -594,7 +402,7 @@ if ( ! function_exists( 'kleo_frontend_files' ) ) :
 
 		// Register the styles
 		wp_register_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), KLEO_THEME_VERSION, 'all' );
-		wp_register_style( 'buddyapp', get_template_directory_uri() . '/assets/less/theme' . $min . '.css', array(), KLEO_THEME_VERSION, 'all' );
+		wp_register_style( 'pool', get_template_directory_uri() . '/assets/less/theme' . $min . '.css', array(), KLEO_THEME_VERSION, 'all' );
 		wp_register_style( 'kleo-font-icons', sq_get_fonts_path() , array(), KLEO_THEME_VERSION, 'all' );
 		wp_register_style( 'kleo-animate', get_template_directory_uri() . '/assets/css/animate.css', array(), KLEO_THEME_VERSION, 'all' );
 		wp_register_style( 'magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css', array(), KLEO_THEME_VERSION, 'all' );
@@ -604,7 +412,7 @@ if ( ! function_exists( 'kleo_frontend_files' ) ) :
 
 		//enqueue required styles
 		wp_enqueue_style( 'bootstrap' );
-		wp_enqueue_style( 'buddyapp' );
+		wp_enqueue_style( 'pool' );
 		wp_enqueue_style( 'kleo-font-icons' );
 		wp_enqueue_style( 'kleo-animate' );
 		wp_enqueue_style( 'magnific-popup' );
@@ -712,7 +520,7 @@ if (!function_exists('kleo_wp_title')):
         }
         // Add a page number if necessary.
         if ( $paged >= 2 || $page >= 2 ) {
-            $title = "$title $sep " . sprintf( esc_html__( 'Page %s', 'buddyapp' ), max( $paged, $page ) );
+            $title = "$title $sep " . sprintf( esc_html__( 'Page %s', 'pool' ), max( $paged, $page ) );
         }
 
         return $title;
@@ -810,28 +618,28 @@ function kleo_login_settings( $kleo )
     //
 
     $kleo['sec']['kleo_section_login'] = array(
-        'title' => esc_html__( 'Login redirect', 'buddyapp' ),
+        'title' => esc_html__( 'Login redirect', 'pool' ),
         'priority' => 16
     );
 
     $kleo['set'][] = array(
         'id' => 'login_redirect',
-        'title' => esc_html__('Login page redirect', 'buddyapp'),
+        'title' => esc_html__('Login page redirect', 'pool'),
         'type' => 'select',
         'default' => 'default',
         'choices' => array( 'default' => 'Default', 'reload' => 'Reload', 'custom' => 'Custom link'),
         'section' => 'kleo_section_login',
-        'description' => esc_html__('Default: WordPress default behaviour. Reload: will reload current page.', 'buddyapp'),
+        'description' => esc_html__('Default: WordPress default behaviour. Reload: will reload current page.', 'pool'),
     );
 
     $kleo['set'][] = array(
         'id' => 'login_redirect_custom',
-        'title' => esc_html__( 'Custom link redirect', 'buddyapp' ),
+        'title' => esc_html__( 'Custom link redirect', 'pool' ),
         'type' => 'text',
         'default' => '',
         'section' => 'kleo_section_login',
         'description' => wp_kses( __('Set a link like http://yoursite.com/homepage for users to get redirected on login.<br> ' .
-            'For more complex redirect logic please set Login redirect to Default WordPress and use Peter\'s redirect plugin or similar.', 'buddyapp'), array( 'br' => array() ) ),
+            'For more complex redirect logic please set Login redirect to Default WordPress and use Peter\'s redirect plugin or similar.', 'pool'), array( 'br' => array() ) ),
         'condition' => array( 'login_redirect', 'custom' )
     );
 
@@ -865,7 +673,7 @@ if (! function_exists('kleo_ajax_login')){
                     'loggedin' => false,
                     'message' => '<i class="icon-info-outline"></i> ' .
                         wp_kses(
-                            sprintf( __( 'You are already logged in. Please <a href="#" onclick="%s">refresh</a> page', 'buddyapp' ), $link ),
+                            sprintf( __( 'You are already logged in. Please <a href="#" onclick="%s">refresh</a> page', 'pool' ), $link ),
                             array( 'a' => array( 'href' => true, 'onclick' => true ) )
                         )
                 )
@@ -903,7 +711,7 @@ if (! function_exists('kleo_ajax_login')){
         if ( is_wp_error( $user_signon ) ) {
             $error_msg = $user_signon->get_error_message();
             echo json_encode(array( 'loggedin' => false, 'message' => '<span class="wrong-response"><i class="icon-warning"></i> ' . wp_kses_data( $error_msg ) . '</span>' ));
-            //echo json_encode(array( 'loggedin' => false, 'message' => '<span class="wrong-response"><i class="icon-warning"></i> ' . esc_html__( 'Wrong username or password. Please try again.', 'buddyapp' ) . '</span>' ));
+            //echo json_encode(array( 'loggedin' => false, 'message' => '<span class="wrong-response"><i class="icon-warning"></i> ' . esc_html__( 'Wrong username or password. Please try again.', 'pool' ) . '</span>' ));
         } else {
             if ( sq_option( 'login_redirect' , 'default' ) == 'reload' ) {
                 $redirecturl = NULL;
@@ -927,7 +735,7 @@ if (! function_exists('kleo_ajax_login')){
                     'loggedin' => true,
                     'redirecturl' => $redirecturl,
                     'message'=> '<span class="good-response"><i class="icon-check"></i> ' .
-                        esc_html__( 'Login successful, redirecting...', 'buddyapp' ) . '</span>'
+                        esc_html__( 'Login successful, redirecting...', 'pool' ) . '</span>'
                 )
             );
         }
@@ -1043,12 +851,12 @@ if ( ! function_exists( 'kleo_lost_password_ajax' )) {
 
 
             if ( $message && ! wp_mail( $user_email, wp_specialchars_decode( $title ), $message ) ) {
-                echo '<span class="wrong-response">' . esc_html__( "Failure!", 'buddyapp' );
+                echo '<span class="wrong-response">' . esc_html__( "Failure!", 'pool' );
                 echo esc_html__( 'The e-mail could not be sent.', 'default' );
                 echo "</span>";
                 die();
             } else {
-                echo '<span class="good-response">' . esc_html__( "Email successfully sent!", 'buddyapp' )."</span>";
+                echo '<span class="good-response">' . esc_html__( "Email successfully sent!", 'pool' )."</span>";
                 die();
             }
         }
@@ -1092,11 +900,11 @@ function kleo_custom_redirect( $redirect_to, $requested_redirect_to, $user  ) {
  ***************************************************/
 
 function add_footer_widgets_columns() {
-	
+
 	if ( ! is_active_sidebar( 'footer-1' ) && ! is_active_sidebar( 'footer-2' ) && ! is_active_sidebar( 'footer-3' ) && ! is_active_sidebar( 'footer-4' ) ) {
 		return;
 	}
-	
+
     ?>
     <div id="footer" class="footer-color border-top">
         <div class="container-full">

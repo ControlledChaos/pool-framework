@@ -37,15 +37,15 @@ get_header();
 
 					<?php
 						the_content();
-						wp_link_pages( array( 'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'buddyapp' ), 'after' => '</div>' ) );
+						wp_link_pages( array( 'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pool' ), 'after' => '</div>' ) );
 					?>
 				</div><!-- .entry-content -->
 			</article><!-- #post-## -->
 
 			<nav id="image-navigation" class="navigation image-navigation">
 				<div class="nav-links">
-				<?php previous_image_link( false, '<div class="previous-image">' . esc_html__( 'Previous Image', 'buddyapp' ) . '</div>' ); ?>
-				<?php next_image_link( false, '<div class="next-image">' . esc_html__( 'Next Image', 'buddyapp' ) . '</div>' ); ?>
+				<?php previous_image_link( false, '<div class="previous-image">' . esc_html__( 'Previous Image', 'pool' ) . '</div>' ); ?>
+				<?php next_image_link( false, '<div class="next-image">' . esc_html__( 'Next Image', 'pool' ) . '</div>' ); ?>
 				</div><!-- .nav-links -->
 			</nav><!-- #image-navigation -->
 

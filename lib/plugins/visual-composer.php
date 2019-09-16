@@ -22,20 +22,20 @@ function buddy_vc_manipulate_shortcodes() {
     vc_map(
         array(
             'base'            => 'kleo_dashboard',
-            'name'            => esc_html__( 'Dashboard Item', 'buddyapp' ),
+            'name'            => esc_html__( 'Dashboard Item', 'pool' ),
             'weight'          => 6,
             'class'           => '',
             'icon'            => 'block-grid',
             'category'        => "Content",
-            'description'     => esc_html__( 'Nice dashboard layout item', 'buddyapp' ),
+            'description'     => esc_html__( 'Nice dashboard layout item', 'pool' ),
             'content_element' => true,
             "as_parent" => array('except' => 'kleo_dashboard'),
             'js_view'         => 'VcColumnView',
             'params'          => array(
                 array(
                     'param_name'  => 'title',
-                    'heading'     => esc_html__( 'Title', 'buddyapp' ),
-                    'description' => esc_html__( 'Dashboard title', 'buddyapp' ),
+                    'heading'     => esc_html__( 'Title', 'pool' ),
+                    'description' => esc_html__( 'Dashboard title', 'pool' ),
                     'type'        => 'textfield',
                     'holder'      => "div",
                     'class' => 'hide hidden',

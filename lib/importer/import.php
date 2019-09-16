@@ -24,8 +24,8 @@ class kleoImport {
 	 * ---------------------------------------------------------------------------- */
 	function init() {
 		add_theme_page(
-			esc_html__( 'Theme Demo Data', 'buddyapp' ),
-			esc_html__( 'Theme Demo Data', 'buddyapp' ),
+			esc_html__( 'Theme Demo Data', 'pool' ),
+			esc_html__( 'Theme Demo Data', 'pool' ),
 			'edit_theme_options',
 			$this->slug,
 			array( &$this, 'import' )
@@ -210,7 +210,7 @@ class kleoImport {
 
                         default:
 							// Empty select.import
-							$this->error = esc_html__('Please select data to import.','buddyapp');
+							$this->error = esc_html__('Please select data to import.','pool');
 							break;
 					}
 					
@@ -221,7 +221,7 @@ class kleoImport {
 						echo '</div>';
 					} else {
 						echo '<div class="updated settings-error">';
-							echo '<p><strong>'. esc_html__('Import successful. Have fun!','buddyapp') .'</strong></p>';
+							echo '<p><strong>'. esc_html__('Import successful. Have fun!','pool') .'</strong></p>';
 						echo '</div>';
 					}
 

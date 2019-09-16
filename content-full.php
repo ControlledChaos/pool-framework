@@ -31,8 +31,8 @@ $kleo_post_format = get_post_format();
 
 				<div class="entry-content">
 
-					<?php the_content( wp_kses_post( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'buddyapp' ) ) ); ?>
-					<?php wp_link_pages( array( 'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'buddyapp' ), 'after' => '</div>' ) ); ?>
+					<?php the_content( wp_kses_post( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'pool' ) ) ); ?>
+					<?php wp_link_pages( array( 'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pool' ), 'after' => '</div>' ) ); ?>
 
 				</div><!--end entry-content-->
 

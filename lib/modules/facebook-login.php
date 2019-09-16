@@ -9,7 +9,7 @@ function kleo_fb_messages_settings( $kleo )
     //
 
     $kleo['sec']['kleo_section_fb'] = array(
-        'title' => esc_html__('Facebook Login', 'buddyapp'),
+        'title' => esc_html__('Facebook Login', 'pool'),
         'priority' => 15
     );
 
@@ -21,21 +21,21 @@ function kleo_fb_messages_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'facebook_login',
         'type' => 'switch',
-        'title' => esc_html__('Enable Facebook Login', 'buddyapp'),
+        'title' => esc_html__('Enable Facebook Login', 'pool'),
         'default' => '0',
         'section' => 'kleo_section_fb',
-        'description' => esc_html__('Allow users to login with Facebook', 'buddyapp'),
+        'description' => esc_html__('Allow users to login with Facebook', 'pool'),
         'transport' => 'postMessage'
     );
 
     $kleo['set'][] = array(
         'id' => 'fb_app_id',
         'type' => 'text',
-        'title' => esc_html__('Facebook APP ID', 'buddyapp'),
+        'title' => esc_html__('Facebook APP ID', 'pool'),
         'default' => '',
         'section' => 'kleo_section_fb',
-        'description' => esc_html__('Enter you Facebook APP ID', 'buddyapp') . "<br>" .
-                            sprintf( __( "If you don't have one, you can create it from <a href='%s'>HERE</a>", 'buddyapp' ), 'https://developers.facebook.com/apps' ) .
+        'description' => esc_html__('Enter you Facebook APP ID', 'pool') . "<br>" .
+                            sprintf( __( "If you don't have one, you can create it from <a href='%s'>HERE</a>", 'pool' ), 'https://developers.facebook.com/apps' ) .
                             "<br>". sprintf( __( "See tutorial <a href='%s'>here</a>", "buddyapp" ), 'http://seventhqueen.com/support/general/article/create-facebook-app-get-app-id-facebook-login' ),
 
         'transport' => 'postMessage',
@@ -45,10 +45,10 @@ function kleo_fb_messages_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'facebook_register',
         'type' => 'switch',
-        'title' => esc_html__('Enable registering with Facebook', 'buddyapp'),
+        'title' => esc_html__('Enable registering with Facebook', 'pool'),
         'default' => '0',
         'section' => 'kleo_section_fb',
-        'description' => esc_html__('Allow users to register with Facebook', 'buddyapp'),
+        'description' => esc_html__('Allow users to register with Facebook', 'pool'),
         'transport' => 'postMessage',
         'condition' => array('facebook_login', '1')
     );
@@ -56,10 +56,10 @@ function kleo_fb_messages_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'facebook_avatar',
         'type' => 'switch',
-        'title' => esc_html__('Get users avatar from Facebook', 'buddyapp'),
+        'title' => esc_html__('Get users avatar from Facebook', 'pool'),
         'default' => '1',
         'section' => 'kleo_section_fb',
-        'description' => esc_html__('It will show avatar from Facebook is user does not have one uploaded.', 'buddyapp'),
+        'description' => esc_html__('It will show avatar from Facebook is user does not have one uploaded.', 'pool'),
         'transport' => 'postMessage',
         'condition' => array('facebook_login', '1')
     );
@@ -253,11 +253,11 @@ function kleo_fb_intialize(){
     header( 'Content-type: application/json' );
 
     if ( is_user_logged_in() ) {
-        die(json_encode(array('error' => esc_html__('You are already logged in.', 'buddyapp'))));
+        die(json_encode(array('error' => esc_html__('You are already logged in.', 'pool'))));
     }
 
     if( !isset( $_REQUEST['FB_response'] ) || !isset( $_REQUEST['FB_userdata'] )) {
-        die(json_encode(array('error' => esc_html__('Authentication required.', 'buddyapp'))));
+        die(json_encode(array('error' => esc_html__('Authentication required.', 'pool'))));
     }
 
     $FB_response = $_REQUEST['FB_response'];
@@ -265,7 +265,7 @@ function kleo_fb_intialize(){
     $FB_userid = $FB_userdata['id'];
 
     if( !$FB_userid ) {
-        die(json_encode(array('error' => esc_html__('Please connect your facebook account.', 'buddyapp'))));
+        die(json_encode(array('error' => esc_html__('Please connect your facebook account.', 'pool'))));
     }
 
     global $wpdb;
@@ -283,10 +283,10 @@ function kleo_fb_intialize(){
         if( !$user_ID )
         {
             if ( !get_option( 'users_can_register' )) {
-                die( json_encode( array( 'error' => esc_html__('Registration is not open at this time. Please come back later.', 'buddyapp') )));
+                die( json_encode( array( 'error' => esc_html__('Registration is not open at this time. Please come back later.', 'pool') )));
             }
             if (! sq_option('facebook_register', false)) {
-                die( json_encode( array( 'error' => esc_html__('Registration using Facebook is not currently allowed. Please use our Register page', 'buddyapp') )));
+                die( json_encode( array( 'error' => esc_html__('Registration using Facebook is not currently allowed. Please use our Register page', 'pool') )));
             }
 
             extract( $FB_userdata );
@@ -303,11 +303,11 @@ function kleo_fb_intialize(){
 
             $user_email = $email;
             if ( empty( $user_email )) {
-                die(json_encode(array('error' => esc_html__('Please click again to login with Facebook and allow the application to use your email address', 'buddyapp'))));
+                die(json_encode(array('error' => esc_html__('Please click again to login with Facebook and allow the application to use your email address', 'pool'))));
             }
 
             if( empty( $name )) {
-                die(json_encode(array('error' => 'empty_name', esc_html__('We didn\'t find your name. Please complete your facebook account before proceeding.', 'buddyapp'))));
+                die(json_encode(array('error' => 'empty_name', esc_html__('We didn\'t find your name. Please complete your facebook account before proceeding.', 'pool'))));
             }
 
             $user_login = sanitize_title_with_dashes( sanitize_user( $display_name, true ));
@@ -402,7 +402,7 @@ function kleo_fb_intialize(){
         'type' => $logintype,
         'url' => $redirect,
         'redirectType' => $redirect_type,
-        'message' => esc_html__( 'Login successful, redirecting...','buddyapp' )
+        'message' => esc_html__( 'Login successful, redirecting...','pool' )
     )));
 }
 if (! is_admin()) {
@@ -419,7 +419,7 @@ if (!function_exists('kleo_fb_register_message')):
         if (isset($_GET['fb']) && $_GET['fb'] == 'registered')
         {
             echo '<div class="clearfix"></div><div class="alert alert-success" id="message" data-alert>';
-            echo esc_html__('Thank you for registering. Please make sure to complete your profile fields below.', 'buddyapp');
+            echo esc_html__('Thank you for registering. Please make sure to complete your profile fields below.', 'pool');
             echo '</div>';
         }
     }
@@ -536,7 +536,7 @@ if ( ! function_exists( 'kleo_get_fb_button' ) ) :
         ?>
         <p class="fb-register-title"><?php esc_html_e("Sign up faster", "buddyapp");?></p>
         <div class="kleo-fb-wrapper">
-            <a href="#" class="kleo-facebook-connect btn btn-default"><i class="icon-facebook"></i><span><?php esc_html_e("Log in with Facebook", 'buddyapp');?></span></a>
+            <a href="#" class="kleo-facebook-connect btn btn-default"><i class="icon-facebook"></i><span><?php esc_html_e("Log in with Facebook", 'pool');?></span></a>
         </div>
 
         <?php

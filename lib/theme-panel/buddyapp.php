@@ -7,8 +7,8 @@
                 <h3><span class="dashicons dashicons-admin-appearance"></span> <?php esc_html_e( "Getting started","buddyapp" );?></h3>
                 <p>
                     <?php esc_html_e("Thanks for purchasing our theme. To begin please do the following:", "buddyapp"); ?><br>
-                    <?php printf( wp_kses_data( __( '- Make sure to install our recommended <a href="%s" target="_blank"> Plugins</a>', 'buddyapp' ) ), admin_url('admin.php?page=install-required-plugins') );?><br>
-                    <?php printf( wp_kses_data(__( '- Install <a href="%s" target="_blank">Demo content</a>', 'buddyapp') ), admin_url('admin.php?page=kleo_import') ); ?>
+                    <?php printf( wp_kses_data( __( '- Make sure to install our recommended <a href="%s" target="_blank"> Plugins</a>', 'pool' ) ), admin_url('admin.php?page=install-required-plugins') );?><br>
+                    <?php printf( wp_kses_data(__( '- Install <a href="%s" target="_blank">Demo content</a>', 'pool') ), admin_url('admin.php?page=kleo_import') ); ?>
                 </p>
 
             </div>
@@ -19,7 +19,7 @@
 			        <p>
 				        <?php echo wp_kses_post( __( "You can receive automatic updates from Themeforest, where out theme is exclusively sold.<br>Just enter your Marketplace username and API key at the link below.", "buddyapp" ) );?>
 			        </p>
-			        <?php printf( wp_kses_data( __( '<a href="%s" target="_blank" class="button button-primary button-large">Setup updates</a>', 'buddyapp') ), admin_url('admin.php?page=envato-wordpress-toolkit'));?>
+			        <?php printf( wp_kses_data( __( '<a href="%s" target="_blank" class="button button-primary button-large">Setup updates</a>', 'pool') ), admin_url('admin.php?page=envato-wordpress-toolkit'));?>
 		        </div>
 	        <?php else: ?>
 
@@ -28,7 +28,7 @@
 			        <p>
 				        <?php esc_html_e( "Automatic updates are disabled. Please enable Envato WordPress Toolkit plugin to receive automatic updates.", "buddyapp" );?>
 			        </p>
-			        <?php printf( wp_kses_data( __( '<a href="%s" target="_blank" class="button button-primary button-large">Enable auto updates</a>', 'buddyapp' ) ), admin_url('admin.php?page=install-required-plugins') );?>
+			        <?php printf( wp_kses_data( __( '<a href="%s" target="_blank" class="button button-primary button-large">Enable auto updates</a>', 'pool' ) ), admin_url('admin.php?page=install-required-plugins') );?>
 		        </div>
 
 	        <?php endif; ?>

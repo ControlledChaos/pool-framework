@@ -225,13 +225,13 @@ function kleo_add_customizer_custom_controls($wp_customize)
                         <option value=""><?php esc_html_e("Default", "buddyapp");?></option>
                         <?php
                         $standard_fonts = kleo_get_standard_fonts();
-                        echo '<optgroup label="'. esc_html__('Standard Fonts','buddyapp') .'">';
+                        echo '<optgroup label="'. esc_html__('Standard Fonts','pool') .'">';
                         foreach ( $standard_fonts as $v )
                         {
                             printf('<option value="%s" %s>%s</option>', $v, selected($this->value(), $v, false), $v);
                         }
                         echo '</optgroup>';
-                        echo '<optgroup label="'. esc_html__('Google Fonts','buddyapp') .'">';
+                        echo '<optgroup label="'. esc_html__('Google Fonts','pool') .'">';
 
                         foreach ( $this->fonts as $k => $v )
                         {

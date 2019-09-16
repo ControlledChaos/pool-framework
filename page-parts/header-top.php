@@ -156,7 +156,7 @@ if ( sq_option( 'menu_dropdown', 'hover', true ) == 'hover' )  {
                                             <div class="show-login">
                                                 <a href="">
                                                     <i class="icon-lock"></i>
-                                                    <?php esc_html_e( "Login", 'buddyapp' ); ?>
+                                                    <?php esc_html_e( "Login", 'pool' ); ?>
                                                 </a>
                                             </div>
 

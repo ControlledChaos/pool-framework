@@ -268,8 +268,8 @@ function kleo_pagination( $class = 'pagination' ) {
 		'current'  => $paged,
 		'mid_size' => 3,
 		'add_args' => array_map( 'urlencode', $query_args ),
-		'prev_text' => esc_html__( '&laquo;', 'buddyapp' ),
-		'next_text' => esc_html__( '&raquo;', 'buddyapp' ),
+		'prev_text' => esc_html__( '&laquo;', 'pool' ),
+		'next_text' => esc_html__( '&raquo;', 'pool' ),
 		'type' => 'array'
 	) );
 
@@ -315,33 +315,33 @@ if ( ! function_exists( 'kleo_title' ) ):
 		$output = "";
 
 		if (is_tag()) {
-			$output = __('Tag Archive for:','buddyapp')." ".single_tag_title('',false);
+			$output = __('Tag Archive for:','pool')." ".single_tag_title('',false);
 		}
 		elseif(is_tax()) {
 			$term = get_term_by( 'slug', get_query_var('term'), get_query_var('taxonomy') );
 			$output = $term->name;
 		}
 		elseif ( is_category() ) {
-			$output = __('Archive for category:', 'buddyapp') . " " . single_cat_title('', false);
+			$output = __('Archive for category:', 'pool') . " " . single_cat_title('', false);
 		}
 		elseif (is_day())
 		{
-			$output = __('Archive for date:','buddyapp')." ".get_the_time('F jS, Y');
+			$output = __('Archive for date:','pool')." ".get_the_time('F jS, Y');
 		}
 		elseif (is_month())
 		{
-			$output = __('Archive for month:','buddyapp')." ".get_the_time('F, Y');
+			$output = __('Archive for month:','pool')." ".get_the_time('F, Y');
 		}
 		elseif (is_year())
 		{
-			$output = __('Archive for year:','buddyapp')." ".get_the_time('Y');
+			$output = __('Archive for year:','pool')." ".get_the_time('Y');
 		}
 		elseif (is_author())  {
 			$curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
-			$output = __('Author Archive','buddyapp')." ";
+			$output = __('Author Archive','pool')." ";
 
 			if( isset( $curauth->nickname ) ) {
-				$output .= __('for:','buddyapp')." ".$curauth->nickname;
+				$output .= __('for:','pool')." ".$curauth->nickname;
 			}
 		}
 		elseif ( is_archive() )  {
@@ -354,22 +354,22 @@ if ( ! function_exists( 'kleo_title' ) ):
 			{
 				if($wp_query->found_posts > 1)
 				{
-					$output =  $wp_query->found_posts ." ". __('search results for:','buddyapp')." ".esc_attr( get_search_query() );
+					$output =  $wp_query->found_posts ." ". __('search results for:','pool')." ".esc_attr( get_search_query() );
 				}
 				else
 				{
-					$output =  $wp_query->found_posts ." ". __('search result for:','buddyapp')." ".esc_attr( get_search_query() );
+					$output =  $wp_query->found_posts ." ". __('search result for:','pool')." ".esc_attr( get_search_query() );
 				}
 			}
 			else
 			{
 				if( ! empty($_GET['s']) )
 				{
-					$output = __('Search results for:','buddyapp')." ".esc_attr( get_search_query() );
+					$output = __('Search results for:','pool')." ".esc_attr( get_search_query() );
 				}
 				else
 				{
-					$output = __('To search the site please enter a valid term','buddyapp');
+					$output = __('To search the site please enter a valid term','pool');
 				}
 			}
 
@@ -381,11 +381,11 @@ if ( ! function_exists( 'kleo_title' ) ):
 			if (get_option('page_for_posts')) {
 				$output = get_the_title(get_option('page_for_posts'));
 			} else {
-				$output = __( 'Blog', 'buddyapp' );
+				$output = __( 'Blog', 'pool' );
 			}
 
 		} elseif ( is_404() ) {
-			$output = __('Error 404 - Page not found','buddyapp');
+			$output = __('Error 404 - Page not found','pool');
 		}
 		else {
 			$output = get_the_title();
@@ -393,7 +393,7 @@ if ( ! function_exists( 'kleo_title' ) ):
 
 		if (isset($_GET['paged']) && !empty($_GET['paged']))
 		{
-			$output .= " (".__('Page','buddyapp')." ".$_GET['paged'].")";
+			$output .= " (".__('Page','pool')." ".$_GET['paged'].")";
 		}
 
 		$output = apply_filters( 'kleo_title', $output );
@@ -488,19 +488,19 @@ if ( ! function_exists( 'kleo_generate_post_type_labels' ) ) {
 	function kleo_generate_post_type_labels( $token = 'context', $singular, $plural, $menu )
 	{
 		$labels = array(
-			'name' => sprintf( _x('%s', 'post type general name', 'buddyapp'), $plural ),
-			'singular_name' => sprintf( _x('%s', 'post type singular name', 'buddyapp'), $singular ),
-			'add_new' => sprintf( esc_html__( 'Add New %s', 'add new button post', 'buddyapp' ), $singular),
-			'add_new_item' => sprintf(esc_html__('Add New %s', 'buddyapp'), $singular),
-			'edit_item' => sprintf(esc_html__('Edit %s', 'buddyapp'), $singular),
-			'new_item' => sprintf(esc_html__('New %s', 'buddyapp'), $singular),
-			'all_items' => sprintf(esc_html__('All %s', 'buddyapp'), $plural),
-			'view_item' => sprintf(esc_html__('View %s', 'buddyapp'), $singular),
-			'search_items' => sprintf(esc_html__('Search %s', 'buddyapp'), $plural),
-			'not_found' => sprintf(esc_html__('No %s found', 'buddyapp'), strtolower($plural)),
-			'not_found_in_trash' => sprintf(esc_html__('No %s found in Trash', 'buddyapp'), strtolower($plural)),
+			'name' => sprintf( _x('%s', 'post type general name', 'pool'), $plural ),
+			'singular_name' => sprintf( _x('%s', 'post type singular name', 'pool'), $singular ),
+			'add_new' => sprintf( esc_html__( 'Add New %s', 'add new button post', 'pool' ), $singular),
+			'add_new_item' => sprintf(esc_html__('Add New %s', 'pool'), $singular),
+			'edit_item' => sprintf(esc_html__('Edit %s', 'pool'), $singular),
+			'new_item' => sprintf(esc_html__('New %s', 'pool'), $singular),
+			'all_items' => sprintf(esc_html__('All %s', 'pool'), $plural),
+			'view_item' => sprintf(esc_html__('View %s', 'pool'), $singular),
+			'search_items' => sprintf(esc_html__('Search %s', 'pool'), $plural),
+			'not_found' => sprintf(esc_html__('No %s found', 'pool'), strtolower($plural)),
+			'not_found_in_trash' => sprintf(esc_html__('No %s found in Trash', 'pool'), strtolower($plural)),
 			'parent_item_colon' => '',
-			'menu_name' => sprintf(esc_html__('%s', 'buddyapp'), $menu)
+			'menu_name' => sprintf(esc_html__('%s', 'pool'), $menu)
 		);
 		$labels = apply_filters( 'kleo_generate_post_type_labels_' . $token, $labels );
 		return $labels;

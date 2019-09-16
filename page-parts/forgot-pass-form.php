@@ -14,7 +14,7 @@
             <span class="login-input-wrapper">
                 <input type="text" id="forgot-email" required name="email" class="form-control login-field">
                 <label class="login-label">
-                    <span class="login-label-content"><?php esc_html_e("Username or Email",'buddyapp');?></span>
+                    <span class="login-label-content"><?php esc_html_e("Username or Email",'pool');?></span>
                 </label>
             </span>
             
@@ -22,7 +22,7 @@
             
             <button class="btn btn-lg btn-default btn-block login-button" type="submit"><?php esc_html_e( "Reset Password", "buddyapp" ); ?></button>
             
-            <a href="#kleo-login-modal" class="show-login kleo-other-action"><?php esc_html_e( 'I remember my details', 'buddyapp' );?></a>
+            <a href="#kleo-login-modal" class="show-login kleo-other-action"><?php esc_html_e( 'I remember my details', 'pool' );?></a>
             
         </form>
         

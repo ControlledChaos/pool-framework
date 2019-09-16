@@ -226,32 +226,32 @@ function kleo_base_settings( $kleo )
     //
 
     $kleo['panels']['kleo_panel_styling'] = array(
-        'title' => esc_html__('Styling', 'buddyapp'),
-        'description' => __('Styling & fonts settings', 'buddyapp'),
+        'title' => esc_html__('Styling', 'pool'),
+        'description' => __('Styling & fonts settings', 'pool'),
         'priority' => 10
     );
 
 
     $kleo['sec']['kleo_section_layout'] = array(
-        'title' => esc_html__( 'Layout', 'buddyapp' ),
+        'title' => esc_html__( 'Layout', 'pool' ),
         'priority' => 8
     );
     $kleo['sec']['kleo_section_styling'] = array(
-        'title' => esc_html__('Main section Colors', 'buddyapp'),
+        'title' => esc_html__('Main section Colors', 'pool'),
         'panel' => 'kleo_panel_styling',
         'priority' => 10
     );
     $kleo['sec']['kleo_section_fonts'] = array(
-        'title' => esc_html__('Fonts', 'buddyapp'),
+        'title' => esc_html__('Fonts', 'pool'),
         'panel' => 'kleo_panel_styling',
         'priority' => 10
     );
     $kleo['sec']['kleo_section_logo'] = array(
-        'title' => esc_html__('Logo', 'buddyapp'),
+        'title' => esc_html__('Logo', 'pool'),
         'priority' => 13
     );
     $kleo['sec']['kleo_section_blog'] = array(
-        'title' => esc_html__('Blog', 'buddyapp'),
+        'title' => esc_html__('Blog', 'pool'),
         'priority' => 14
     );
 
@@ -264,11 +264,11 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'site_layout',
         'type' => 'select',
-        'title' => esc_html__('Site Layout', 'buddyapp'),
+        'title' => esc_html__('Site Layout', 'pool'),
         'choices' => array(
-            'full' => esc_html__('Full', 'buddyapp'),
-            'right' => esc_html__('Right sidebar', 'buddyapp'),
-            'left' => esc_html__('Left sidebar', 'buddyapp')
+            'full' => esc_html__('Full', 'pool'),
+            'right' => esc_html__('Right sidebar', 'pool'),
+            'left' => esc_html__('Left sidebar', 'pool')
         ),
         'default' => 'full',
         'section' => 'kleo_section_layout',
@@ -280,10 +280,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'page_loader',
         'type' => 'switch',
-        'title' => esc_html__('Page load transition', 'buddyapp'),
+        'title' => esc_html__('Page load transition', 'pool'),
         'default' => '0',
         'section' => 'kleo_section_layout',
-        'description' => esc_html__('Have a nice page load effect', 'buddyapp'),
+        'description' => esc_html__('Have a nice page load effect', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -293,7 +293,7 @@ function kleo_base_settings( $kleo )
         'title' => esc_html__( "Main container left padding ", "buddyapp" ),
         'default' => '40',
         'section' => 'kleo_section_layout',
-        'description' => esc_html__('Left padding in pixels.(default 40)', 'buddyapp') ,
+        'description' => esc_html__('Left padding in pixels.(default 40)', 'pool') ,
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -303,7 +303,7 @@ function kleo_base_settings( $kleo )
         'title' => esc_html__( "Main container right padding", "buddyapp" ),
         'default' => '40',
         'section' => 'kleo_section_layout',
-        'description' => esc_html__('Right padding in pixels.(default 40)', 'buddyapp') ,
+        'description' => esc_html__('Right padding in pixels.(default 40)', 'pool') ,
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -317,10 +317,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'font_headings',
         'type' => 'gfont',
-        'title' => esc_html__('Headings font', 'buddyapp'),
+        'title' => esc_html__('Headings font', 'pool'),
         'default' => '',
         'section' => 'kleo_section_fonts',
-        'description' => esc_html__('Font for the h1, h2, etc. font', 'buddyapp'),
+        'description' => esc_html__('Font for the h1, h2, etc. font', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -328,10 +328,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'font_text',
         'type' => 'gfont',
-        'title' => esc_html__('Text font', 'buddyapp'),
+        'title' => esc_html__('Text font', 'pool'),
         'default' => '',
         'section' => 'kleo_section_fonts',
-        'description' => esc_html__('Font for the text on your site', 'buddyapp'),
+        'description' => esc_html__('Font for the text on your site', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -344,7 +344,7 @@ function kleo_base_settings( $kleo )
         'title' => esc_html__( "Body text font size", "buddyapp" ),
         'default' => 16,
         'section' => 'kleo_section_fonts',
-        'description' => esc_html__('Font size in pixels', 'buddyapp') .  '. Default 16' ,
+        'description' => esc_html__('Font size in pixels', 'pool') .  '. Default 16' ,
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -357,7 +357,7 @@ function kleo_base_settings( $kleo )
             'title' => strtoupper( $heading ) . ' ' . esc_html__( "Font size", "buddyapp" ),
             'default' => $default,
             'section' => 'kleo_section_fonts',
-            'description' => esc_html__('Font size in pixels', 'buddyapp') .  '. Default ' . $default,
+            'description' => esc_html__('Font size in pixels', 'pool') .  '. Default ' . $default,
             'customizer' => true,
             'transport' => 'refresh'
         );
@@ -381,21 +381,21 @@ function kleo_base_settings( $kleo )
 
 
     $kleo['panels']['kleo_panel_header'] = array(
-        'title' => esc_html__('Header', 'buddyapp'),
+        'title' => esc_html__('Header', 'pool'),
         'priority' => 12
     );
     $kleo['sec']['kleo_section_header'] = array(
-        'title' => esc_html__('Header settings', 'buddyapp'),
+        'title' => esc_html__('Header settings', 'pool'),
         'panel' => 'kleo_panel_header',
         'priority' => 12
     );
     $kleo['sec']['kleo_section_header_styling'] = array(
-        'title' => esc_html__('Header Styling', 'buddyapp'),
+        'title' => esc_html__('Header Styling', 'pool'),
         'panel' => 'kleo_panel_header',
         'priority' => 12
     );
     $kleo['sec']['kleo_section_header_sidemenu'] = array(
-        'title' => esc_html__('Side-Menu Styling', 'buddyapp'),
+        'title' => esc_html__('Side-Menu Styling', 'pool'),
         'panel' => 'kleo_panel_header',
         'priority' => 12
     );
@@ -404,20 +404,20 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'header_status',
         'type' => 'switch',
-        'title' => esc_html__( 'Display Header', 'buddyapp' ),
+        'title' => esc_html__( 'Display Header', 'pool' ),
         'default' => '1',
         'section' => 'kleo_section_header',
-        'description' => esc_html__('Enable/disable the header from your site', 'buddyapp'),
+        'description' => esc_html__('Enable/disable the header from your site', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
     $kleo['set'][] = array(
         'id' => 'header_height',
         'type' => 'text',
-        'title' => esc_html__( 'Header Height' , 'buddyapp' ),
+        'title' => esc_html__( 'Header Height' , 'pool' ),
         'default' => '',
         'section' => 'kleo_section_header',
-        'description' => esc_html__('Set your top header height in pixels(default 60)', 'buddyapp'),
+        'description' => esc_html__('Set your top header height in pixels(default 60)', 'pool'),
         'customizer' => true,
         'transport' => 'refresh',
     );
@@ -425,14 +425,14 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'header_right_logic',
         'type' => 'select',
-        'title' => esc_html__( 'Right menu location display logic' , 'buddyapp' ),
+        'title' => esc_html__( 'Right menu location display logic' , 'pool' ),
         'default' => 'default',
         'choices' => array(
             'default' => 'Just for logged in, under my Profile image',
             'replace' => 'My menu will display horizontally for everyone'
         ),
         'section' => 'kleo_section_header',
-        'description' => esc_html__('How to render the assigned custom menu. First option will show a login button for guests instead of your menu.', 'buddyapp'),
+        'description' => esc_html__('How to render the assigned custom menu. First option will show a login button for guests instead of your menu.', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -440,10 +440,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'header_search',
         'type' => 'switch',
-        'title' => esc_html__( 'Display search in header', 'buddyapp' ),
+        'title' => esc_html__( 'Display search in header', 'pool' ),
         'default' => '1',
         'section' => 'kleo_section_header',
-        'description' => esc_html__('Enable/disable the search form in the header area', 'buddyapp'),
+        'description' => esc_html__('Enable/disable the search form in the header area', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -451,11 +451,11 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'search_context',
         'type' => 'multi-select',
-        'title' => esc_html__( 'Search context' , 'buddyapp' ),
+        'title' => esc_html__( 'Search context' , 'pool' ),
         'default' => '',
         'choices' => kleo_search_scope_post_types(),
         'section' => 'kleo_section_header',
-        'description' => esc_html__('What to search for.', 'buddyapp'),
+        'description' => esc_html__('What to search for.', 'pool'),
         'customizer' => true,
         'transport' => 'postMessage',
         'condition' => array( 'header_search', 1 )
@@ -464,14 +464,14 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'menu_dropdown',
         'type' => 'select',
-        'title' => esc_html__( 'Dropdown menu trigger' , 'buddyapp' ),
+        'title' => esc_html__( 'Dropdown menu trigger' , 'pool' ),
         'default' => 'default',
         'choices' => array(
             'hover' => 'On Hover',
             'click' => 'On Arrow click'
         ),
         'section' => 'kleo_section_header',
-        'description' => esc_html__('How to open the header sub-menus.', 'buddyapp'),
+        'description' => esc_html__('How to open the header sub-menus.', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -481,7 +481,7 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'menu_icon',
         'type' => 'select',
-        'title' => esc_html__( 'Default Menu icon' , 'buddyapp' ),
+        'title' => esc_html__( 'Default Menu icon' , 'pool' ),
         'default' => $icon,
         'choices' => kleo_icons_array(),
         'section' => 'kleo_section_header',
@@ -491,16 +491,16 @@ function kleo_base_settings( $kleo )
 
 
     $kleo['panels']['kleo_panel_side'] = array(
-        'title' => esc_html__('Sidemenu', 'buddyapp'),
+        'title' => esc_html__('Sidemenu', 'pool'),
         'priority' => 13
     );
     $kleo['sec']['kleo_section_side'] = array(
-        'title' => esc_html__('Sidemenu settings', 'buddyapp'),
+        'title' => esc_html__('Sidemenu settings', 'pool'),
         'panel' => 'kleo_panel_side',
         'priority' => 13
     );
     $kleo['sec']['kleo_section_side_styling'] = array(
-        'title' => esc_html__('Sidemenu Styling', 'buddyapp'),
+        'title' => esc_html__('Sidemenu Styling', 'pool'),
         'panel' => 'kleo_panel_side',
         'priority' => 13
     );
@@ -509,10 +509,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'header_sidemenu',
         'type' => 'switch',
-        'title' => esc_html__( 'Sidemenu enabled', 'buddyapp' ),
+        'title' => esc_html__( 'Sidemenu enabled', 'pool' ),
         'default' => '1',
         'section' => 'kleo_section_side',
-        'description' => esc_html__('Enable/disable left sidemenu area', 'buddyapp'),
+        'description' => esc_html__('Enable/disable left sidemenu area', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -520,10 +520,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'sidemenu_icons',
         'type' => 'switch',
-        'title' => esc_html__( 'Show sidemenu icons', 'buddyapp' ),
+        'title' => esc_html__( 'Show sidemenu icons', 'pool' ),
         'default' => '1',
         'section' => 'kleo_section_side',
-        'description' => esc_html__('Enable of disable left side menu icons', 'buddyapp'),
+        'description' => esc_html__('Enable of disable left side menu icons', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -531,10 +531,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'sidemenu_width',
         'type' => 'text',
-        'title' => esc_html__( 'Sidemenu Width' , 'buddyapp' ),
+        'title' => esc_html__( 'Sidemenu Width' , 'pool' ),
         'default' => '',
         'section' => 'kleo_section_side',
-        'description' => esc_html__('Set sidemenu width in pixels(default 250px).', 'buddyapp'),
+        'description' => esc_html__('Set sidemenu width in pixels(default 250px).', 'pool'),
         'customizer' => true,
         'transport' => 'refresh',
         'condition' => array( 'header_sidemenu', 1 )
@@ -543,10 +543,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'sidemenu_col_width',
         'type' => 'text',
-        'title' => esc_html__( 'Sidemenu Collapsed Width' , 'buddyapp' ),
+        'title' => esc_html__( 'Sidemenu Collapsed Width' , 'pool' ),
         'default' => '',
         'section' => 'kleo_section_side',
-        'description' => esc_html__('Set width when closed(default 60px).', 'buddyapp'),
+        'description' => esc_html__('Set width when closed(default 60px).', 'pool'),
         'customizer' => true,
         'transport' => 'refresh',
         'condition' => array( 'header_sidemenu', 1 )
@@ -555,10 +555,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'side_padding_left',
         'type' => 'text',
-        'title' => esc_html__( 'Sidemenu Padding left' , 'buddyapp' ),
+        'title' => esc_html__( 'Sidemenu Padding left' , 'pool' ),
         'default' => '',
         'section' => 'kleo_section_side',
-        'description' => esc_html__('Set left padding in pixels(default 20).', 'buddyapp'),
+        'description' => esc_html__('Set left padding in pixels(default 20).', 'pool'),
         'customizer' => true,
         'transport' => 'refresh',
         'condition' => array( 'header_sidemenu', 1 )
@@ -566,10 +566,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'side_padding_right',
         'type' => 'text',
-        'title' => esc_html__( 'Sidemenu Padding right' , 'buddyapp' ),
+        'title' => esc_html__( 'Sidemenu Padding right' , 'pool' ),
         'default' => '',
         'section' => 'kleo_section_side',
-        'description' => esc_html__('Set right padding in pixels(default 20)', 'buddyapp'),
+        'description' => esc_html__('Set right padding in pixels(default 20)', 'pool'),
         'customizer' => true,
         'transport' => 'refresh',
         'condition' => array( 'header_sidemenu', 1 )
@@ -578,10 +578,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'logo_padding_left',
         'type' => 'text',
-        'title' => esc_html__( 'Logo Padding left' , 'buddyapp' ),
+        'title' => esc_html__( 'Logo Padding left' , 'pool' ),
         'default' => '',
         'section' => 'kleo_section_side',
-        'description' => esc_html__('Set left padding for logo in pixels(default 10).', 'buddyapp'),
+        'description' => esc_html__('Set left padding for logo in pixels(default 10).', 'pool'),
         'customizer' => true,
         'transport' => 'refresh',
         'condition' => array( 'header_sidemenu', 1 )
@@ -590,7 +590,7 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'header_sidemenu_state',
         'type' => 'select',
-        'title' => esc_html__( 'Sidemenu Desktop state' , 'buddyapp' ),
+        'title' => esc_html__( 'Sidemenu Desktop state' , 'pool' ),
         'default' => 'cookie',
         'choices' => array(
             'cookie' => 'Cookie based. Opened by default.',
@@ -598,7 +598,7 @@ function kleo_base_settings( $kleo )
             'narrow' => 'Narrowed'
         ),
         'section' => 'kleo_section_side',
-        'description' => esc_html__('How to show the left sidemenu by default on desktop devices. Cookie based uses last open state before browser refresh.', 'buddyapp'),
+        'description' => esc_html__('How to show the left sidemenu by default on desktop devices. Cookie based uses last open state before browser refresh.', 'pool'),
         'customizer' => true,
         'transport' => 'refresh',
         'condition' => array( 'header_sidemenu', 1 )
@@ -607,10 +607,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'header_bottom_text',
         'type' => 'textarea',
-        'title' => esc_html__( 'Bottom Text' , 'buddyapp' ),
+        'title' => esc_html__( 'Bottom Text' , 'pool' ),
         'default' => Kleo::get_config( 'footer_text' ),
         'section' => 'kleo_section_side',
-        'description' => esc_html__('Bottom text on side menu', 'buddyapp'),
+        'description' => esc_html__('Bottom text on side menu', 'pool'),
         'customizer' => true,
         'transport' => 'refresh',
         'condition' => array( 'header_sidemenu', 1 )
@@ -633,7 +633,7 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'header_style_mobile_background_color',
         'type' => 'color',
-        'title' => esc_html__('Mobile background color', 'buddyapp'),
+        'title' => esc_html__('Mobile background color', 'pool'),
         'default' => '',
         'section' => 'kleo_section_header_styling',
         'customizer' => true,
@@ -712,10 +712,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'logo',
         'type' => 'image',
-        'title' => esc_html__('Logo Image', 'buddyapp'),
+        'title' => esc_html__('Logo Image', 'pool'),
         'default' => Kleo::get_config('logo_default'),
         'section' => 'kleo_section_logo',
-        'description' => esc_html__('Used on dark backgrounds', 'buddyapp'),
+        'description' => esc_html__('Used on dark backgrounds', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -723,7 +723,7 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'logo_retina',
         'type' => 'image',
-        'title' => esc_html__('Retina Logo Image', 'buddyapp'),
+        'title' => esc_html__('Retina Logo Image', 'pool'),
         'default' => '',
         'section' => 'kleo_section_logo',
         'customizer' => true,
@@ -733,10 +733,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'logo_dark',
         'type' => 'image',
-        'title' => esc_html__('Dark Logo Image', 'buddyapp'),
+        'title' => esc_html__('Dark Logo Image', 'pool'),
         'default' => Kleo::get_config('logo_dark_default'),
         'section' => 'kleo_section_logo',
-        'description' => esc_html__('Used on white backgrounds', 'buddyapp'),
+        'description' => esc_html__('Used on white backgrounds', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -744,7 +744,7 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'logo_dark_retina',
         'type' => 'image',
-        'title' => esc_html__( 'Retina Dark Logo Image', 'buddyapp' ),
+        'title' => esc_html__( 'Retina Dark Logo Image', 'pool' ),
         'default' => '',
         'section' => 'kleo_section_logo',
         'customizer' => true,
@@ -754,10 +754,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'logo_mini',
         'type' => 'image',
-        'title' => esc_html__( 'Logo Mini Image', 'buddyapp' ),
+        'title' => esc_html__( 'Logo Mini Image', 'pool' ),
         'default' => Kleo::get_config( 'logo_mini_default' ),
         'section' => 'kleo_section_logo',
-        'description' => esc_html__('Used when side menu is minimized', 'buddyapp'),
+        'description' => esc_html__('Used when side menu is minimized', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -765,7 +765,7 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'logo_mini_retina',
         'type' => 'image',
-        'title' => esc_html__( 'Retina Logo Mini Image', 'buddyapp' ),
+        'title' => esc_html__( 'Retina Logo Mini Image', 'pool' ),
         'default' => '',
         'section' => 'kleo_section_logo',
         'customizer' => true,
@@ -778,7 +778,7 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'blog_layout',
         'type' => 'select',
-        'title' => esc_html__( 'Blog Layout', 'buddyapp' ),
+        'title' => esc_html__( 'Blog Layout', 'pool' ),
         'default' => 'default',
         'choices' => array( 'default' => 'Site Default', 'full' => 'Full', 'right' => 'Right sidebar', 'left' => 'Left sidebar'),
         'section' => 'kleo_section_blog',
@@ -789,7 +789,7 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'blog_style',
         'type' => 'select',
-        'title' => esc_html__( 'Blog Style', 'buddyapp' ),
+        'title' => esc_html__( 'Blog Style', 'pool' ),
         'default' => 'standard',
         'choices' => array( 'standard' => 'Standard', 'full' => 'Full'),
         'section' => 'kleo_section_blog',
@@ -825,10 +825,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'blog_get_image',
         'type' => 'switch',
-        'title' => esc_html__( 'Get image from post content', 'buddyapp' ),
+        'title' => esc_html__( 'Get image from post content', 'pool' ),
         'default' => '1',
         'section' => 'kleo_section_blog',
-        'description' => esc_html__('If no featured image was added, get it from the post content', 'buddyapp'),
+        'description' => esc_html__('If no featured image was added, get it from the post content', 'pool'),
         'customizer' => true,
         'transport' => 'refresh'
     );
@@ -837,10 +837,10 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'blog_default_image',
         'type' => 'image',
-        'title' => esc_html__( 'Default Post Image', 'buddyapp' ),
+        'title' => esc_html__( 'Default Post Image', 'pool' ),
         'default' => '',
         'section' => 'kleo_section_blog',
-        'description' =>  esc_html__('Used when post has no featured image', 'buddyapp'),
+        'description' =>  esc_html__('Used when post has no featured image', 'pool'),
         'customizer' => true,
         'transport' => 'postMessage'
     );
@@ -849,7 +849,7 @@ function kleo_base_settings( $kleo )
     $kleo['set'][] = array(
         'id' => 'post_media_status',
         'type' => 'select',
-        'title' => esc_html__( 'Show featured image on post page', 'buddyapp' ),
+        'title' => esc_html__( 'Show featured image on post page', 'pool' ),
         'default' => '1',
         'choices' => array( '1' => 'Yes', '0' => 'No'),
         'section' => 'kleo_section_blog',

@@ -22,7 +22,7 @@
 
 		<div class="login-create-account-wrapper">
 			<div class="kleo-register-link">
-				<div class="fb-login-link"><?php _e( 'Have an account?','buddyapp' ); ?> <a class="show-login"><?php _e( 'Sign in' ); ?></a></div>
+				<div class="fb-login-link"><?php _e( 'Have an account?','pool' ); ?> <a class="show-login"><?php _e( 'Sign in' ); ?></a></div>
 				<div class="fb-or-section"><span><?php echo __("or", "buddyapp");?></span></div>
 			</div>
 		</div>
