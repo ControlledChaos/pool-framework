@@ -147,69 +147,69 @@ add_action( 'after_setup_theme', 'kleo_setup' );
 function kleo_theme_functions() {
 
     // Resize on the fly.
-    require_once( KLEO_LIB_DIR . '/inc/aq_resizer.php' );
+    require_once get_parent_theme_file_path( '/lib/inc/aq_resizer.php' );
 
     // Menu structure.
-    require_once( KLEO_LIB_DIR . '/menu.php' );
+    require_once get_parent_theme_file_path( '/lib/menu.php' );
 
     // Custom menu.
-    require_if_theme_supports( 'kleo-menu-custom', KLEO_LIB_DIR . '/menu-custom.php' );
+    require_if_theme_supports( 'kleo-menu-custom', get_parent_theme_file_path( '/lib/menu-custom.php' ) );
 
     // Custom menu items.
-    require_if_theme_supports( 'kleo-menu-items', KLEO_LIB_DIR . '/menu-items.php' );
+    require_if_theme_supports( 'kleo-menu-items', get_parent_theme_file_path( '/lib/menu-items.php' ) );
 
     // Include admin customizations.
     if ( is_customize_preview() ) {
-        require_once( KLEO_LIB_DIR . '/customizer/setup.php' );
+        require_once get_parent_theme_file_path( '/lib/customizer/setup.php' );
     }
 
     // Meta boxes.
     if ( is_admin() ) {
-        require_once( KLEO_LIB_DIR . '/metaboxes.php' );
+        require_once get_parent_theme_file_path( '/lib/metaboxes.php' );
     }
 
     // Dynamic CSS generation.
-    require_once( KLEO_LIB_DIR . '/dynamic-css/dynamic-css.php' );
+    require_once get_parent_theme_file_path( '/lib/dynamic-css/dynamic-css.php' );
 
     // BuddyPress compatibility.
     if ( function_exists( 'bp_is_active' ) ) {
-        require_once( KLEO_LIB_DIR . '/plugins/buddypress/buddypress.php' );
+        require_once get_parent_theme_file_path( '/lib/plugins/buddypress/buddypress.php' );
     }
 
     // bbPress compatibility.
     if ( class_exists( 'bbPress' ) ) {
-        require_once( KLEO_LIB_DIR . '/plugins/bbpress/bbpress.php' );
+        require_once get_parent_theme_file_path( '/lib/plugins/bbpress/bbpress.php' );
     }
 
     // Woocommerce compatibility.
     if (  class_exists( 'WooCommerce' ) ) {
-        require_once( KLEO_LIB_DIR . '/plugins/woocommerce.php' );
+        require_once get_parent_theme_file_path( '/lib/plugins/woocommerce.php' );
     }
 
 
     // WPML compatibility.
     if ( function_exists( 'icl_get_languages' ) ) {
-        require_once( KLEO_LIB_DIR . '/plugins/wpml.php' );
+        require_once get_parent_theme_file_path( '/lib/plugins/wpml.php' );
     }
 
     // Visual composer compatibility.
     if ( function_exists( 'vc_set_as_theme' ) ) {
-        require_once( KLEO_LIB_DIR . '/plugins/visual-composer.php' );
+        require_once get_parent_theme_file_path( '/lib/plugins/visual-composer.php' );
     }
 
     // Cleverness TodoList compatibility.
     if ( class_exists( 'CTDL_Widget' )) {
-        require_once( KLEO_LIB_DIR . '/plugins/ctdl.php' );
+        require_once get_parent_theme_file_path( '/lib/plugins/ctdl.php' );
     }
 
     // Easy Knowledge Base compatibility.
     if ( function_exists( 'sq_kb_setup_post_type' ) ) {
-        require_once( KLEO_LIB_DIR . '/plugins/easy-kb/easy-kb.php' );
+        require_once get_parent_theme_file_path( '/lib/plugins/easy-kb/easy-kb.php' );
     }
 
     // Menu items visibility control plugin compatibility.
     if ( class_exists( 'Boom_Walker_Nav_Menu_Edit' ) ) {
-        require_once( KLEO_LIB_DIR . '/plugins/menu-items-visibility-control.php' );
+        require_once get_parent_theme_file_path( '/lib/plugins/menu-items-visibility-control.php' );
     }
 
 }
