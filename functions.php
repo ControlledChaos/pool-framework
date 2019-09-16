@@ -63,7 +63,9 @@ Kleo::init_config( [
 ] );
 
 /**
- * Sets up theme defaults and registers the various WordPress features
+ * Theme setup
+ *
+ * Sets up theme defaults and registers the various WordPress features.
  *
  * @uses load_theme_textdomain() For translation/localization support.
  * @uses add_editor_style() To add a Visual Editor stylesheet.
@@ -80,31 +82,38 @@ function kleo_setup() {
 	 * Makes theme available for translation.
 	 * Translations can be added to the /languages/ directory.
 	 */
-	load_theme_textdomain( 'pool', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'pool', get_parent_theme_file_path( '/languages' ) );
 
-	/* This theme styles the visual editor with editor-style.css to match the theme style. */
+	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
 
-	/* Adds RSS feed links to <head> for posts and comments. */
+	// Adds RSS feed links to <head> for posts and comments.
 	add_theme_support( 'automatic-feed-links' );
 
 	/*
 	 * Enable support for Post Formats.
 	 * See http://codex.wordpress.org/Post_Formats
 	 */
-	add_theme_support( 'post-formats', array(
-		'image', 'gallery', 'status', 'quote', 'video'
-	) );
+	add_theme_support(
+		'post-formats',
+		[
+			'image',
+			'gallery',
+			'status',
+			'quote',
+			'video'
+		]
+	);
 
-	/* This theme uses wp_nav_menu() in two locations. */
+	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menu( 'primary', esc_html__( 'Main Menu (Side)', 'pool' ) );
     register_nav_menu( 'top-left', esc_html__( 'Top Left Header Menu', 'pool' ) );
     register_nav_menu( 'top-right', esc_html__( 'Top Right Header Menu', 'pool' ) );
 
-
-    /* This theme uses a custom image size for featured images, displayed on "standard" posts. */
+    // This theme uses a custom image size for featured images, displayed on "standard" posts.
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 672, 9999 ); // Unlimited height, soft crop
+
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -113,16 +122,16 @@ function kleo_setup() {
 		'search-form', 'comment-form', 'comment-list',
 	) );
 
-	/* Specific framework functionality */
+	// Specific framework functionality.
 	add_theme_support( 'kleo-sidebar-generator' );
     add_theme_support( 'kleo-menu-custom' );
     add_theme_support( 'kleo-menu-items' );
 
-	/* Third-party plugins */
+	// Third-party plugins.
 	add_theme_support( 'bbpress' );
 
+	// Woocomemrce suppoert.
     add_theme_support( 'woocommerce' );
-    /*Add gallery and lightbox support for woocomemrce */
     add_theme_support( 'wc-product-gallery-lightbox' );
     add_theme_support( 'wc-product-gallery-slider' );
 
@@ -137,68 +146,68 @@ add_action( 'after_setup_theme', 'kleo_setup' );
  */
 function kleo_theme_functions() {
 
-    // Resize on the fly
+    // Resize on the fly.
     require_once( KLEO_LIB_DIR . '/inc/aq_resizer.php' );
 
-    // Menu structure
+    // Menu structure.
     require_once( KLEO_LIB_DIR . '/menu.php' );
 
-    /* Custom menu */
+    // Custom menu.
     require_if_theme_supports('kleo-menu-custom', KLEO_LIB_DIR . '/menu-custom.php');
 
-    /* Custom menu items */
+    // Custom menu items.
     require_if_theme_supports('kleo-menu-items', KLEO_LIB_DIR . '/menu-items.php');
 
-    /* Include admin customizations */
+    // Include admin customizations.
     if ( is_customize_preview() ) {
         require_once( KLEO_LIB_DIR . '/customizer/setup.php' );
     }
 
-    //Meta Boxes
+    // Meta boxes.
     if ( is_admin() ) {
         require_once(KLEO_LIB_DIR . '/metaboxes.php');
     }
 
-    //Dynamic CSS generation
+    // Dynamic CSS generation.
     require_once( KLEO_LIB_DIR . '/dynamic-css/dynamic-css.php' );
 
-    /* BuddyPress compatibility */
+    // BuddyPress compatibility.
     if ( function_exists( 'bp_is_active' ) ) {
         require_once( KLEO_LIB_DIR . '/plugins/buddypress/buddypress.php' );
     }
 
-    /* bbPress compatibility */
+    // bbPress compatibility.
     if ( class_exists( 'bbPress' ) ) {
         require_once( KLEO_LIB_DIR . '/plugins/bbpress/bbpress.php' );
     }
 
-    /* Woocommerce compatibility */
+    // Woocommerce compatibility.
     if (  class_exists( 'WooCommerce' ) ) {
         require_once( KLEO_LIB_DIR . '/plugins/woocommerce.php' );
     }
 
 
-    /* WPML compatibility */
+    // WPML compatibility.
     if ( function_exists( 'icl_get_languages' ) ) {
         require_once( KLEO_LIB_DIR . '/plugins/wpml.php' );
     }
 
-    /* Visual composer compatibility */
+    // Visual composer compatibility.
     if ( function_exists( 'vc_set_as_theme' ) ) {
         require_once( KLEO_LIB_DIR . '/plugins/visual-composer.php' );
     }
 
-    /* Cleverness TodoList compatibility */
+    // Cleverness TodoList compatibility.
     if ( class_exists('CTDL_Widget')) {
         require_once( KLEO_LIB_DIR . '/plugins/ctdl.php' );
     }
 
-    /* Easy Knowledge Base compatibility */
+    // Easy Knowledge Base compatibility.
     if ( function_exists( 'sq_kb_setup_post_type' ) ) {
         require_once( KLEO_LIB_DIR . '/plugins/easy-kb/easy-kb.php' );
     }
 
-    // menu-items-visibility-control plugin compatibility
+    // Menu items visibility control plugin compatibility.
     if ( class_exists( 'Boom_Walker_Nav_Menu_Edit' ) ) {
         require_once( KLEO_LIB_DIR . '/plugins/menu-items-visibility-control.php' );
     }
@@ -206,43 +215,25 @@ function kleo_theme_functions() {
 }
 add_action( 'after_setup_theme', 'kleo_theme_functions', 12 );
 
+// Load theme-specific functions.
+require_once get_parent_theme_file_path( 'theme-functions.php' );
 
-/***************************************************
-:: Load Theme specific functions
- ***************************************************/
-
-require_once( trailingslashit( KLEO_LIB_DIR ) . 'theme-functions.php' );
-
-
-
-/***************************************************
-:: Load Theme Panel
- ***************************************************/
-
-if( is_admin() ) {
-    require_once( trailingslashit(KLEO_LIB_DIR) . 'theme-panel/init.php' );
-}
-
-
-
-/***************************************************
-:: 1 Click Install
- ***************************************************/
+// Load theme panel.
 if ( is_admin() ) {
-    require_once( trailingslashit(KLEO_LIB_DIR) . '/importer/import.php' );
+    require_once get_parent_theme_file_path( 'theme-panel/init.php' );
 }
 
+// File importer.
+if ( is_admin() ) {
+    require_once get_parent_theme_file_path( '/importer/import.php' );
+}
 
-
-/***************************************************
-:: Load components
- ***************************************************/
-
-$kleo_components = array(
+// Load components.
+$kleo_components = [
     'base.php',
     'page-title.php',
     'extras.php',
-);
+];
 
 $kleo_components = apply_filters( 'kleo_components', $kleo_components );
 
@@ -251,15 +242,10 @@ foreach ( $kleo_components as $component ) {
     include_once $file_path;
 }
 
-
-
-/***************************************************
-:: Load modules
- ***************************************************/
-
-$kleo_modules = array(
+// Load modules.
+$kleo_modules =[
     'facebook-login.php'
-);
+];
 
 $kleo_modules = apply_filters( 'kleo_modules', $kleo_modules );
 
@@ -268,16 +254,11 @@ foreach ( $kleo_modules as $module ) {
     include_once $file_path;
 }
 
-
-
-/***************************************************
-:: Include widgets
- ***************************************************/
-
-$kleo_widgets = array(
+// Include widgets.
+$kleo_widgets = [
     'recent_posts.php',
 	'social-share.php'
-);
+];
 
 $kleo_widgets = apply_filters( 'kleo_widgets', $kleo_widgets );
 
@@ -289,141 +270,131 @@ foreach ( $kleo_widgets as $widget ) {
     }
 }
 
+/**
+ * Widget areas
+ *
+ * Registers our main widget area and the front page widget areas.
+ *
+ * @since Kleo 1.0
+ */
+function pool_widgets_init() {
 
-if ( ! function_exists( 'kleo_widgets_init' ) ) {
-    /**
-     * Registers our main widget area and the front page widget areas.
-     *
-     * @since Kleo 1.0
-     */
-    function kleo_widgets_init()
-    {
-        register_sidebar(array(
-            'name' => esc_html__('Main Sidebar', 'pool'),
-            'id' => 'sidebar-1',
-            'description' => esc_html__('Main Sidebar', 'pool'),
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget' => '</div>',
-            'before_title' => '<h4 class="widget-title">',
-            'after_title' => '</h4>',
-        ));
+	register_sidebar( [
+		'name'          => esc_html__('Main Sidebar', 'pool'),
+		'id'            => 'sidebar-1',
+		'description'   => esc_html__('Main Sidebar', 'pool'),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	] );
 
-        register_sidebar(array(
-            'name' => esc_html__('Side menu Area', 'pool'),
-            'id' => 'side',
-            'description' => esc_html__('Side Menu Area', 'pool'),
-            'before_widget' => '<div id="%1$s" class="menu-section widget %2$s">',
-            'after_widget' => '</div>',
-            'before_title' => '<p class="menu-section-header"><span>',
-            'after_title' => '</span></p>',
-        ));
+	register_sidebar( [
+		'name'          => esc_html__('Side menu Area', 'pool'),
+		'id'            => 'side',
+		'description'   => esc_html__('Side Menu Area', 'pool'),
+		'before_widget' => '<div id="%1$s" class="menu-section widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<p class="menu-section-header"><span>',
+		'after_title'   => '</span></p>',
+	] );
 
-        register_sidebar(array(
-            'name' => 'Footer column 1',
-            'id' => 'footer-1',
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget' => '</div>',
-            'before_title' => '<h4 class="widget-title">',
-            'after_title' => '</h4>',
-        ));
+	register_sidebar( [
+		'name'          => 'Footer column 1',
+		'id'            => 'footer-1',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	] );
 
-        register_sidebar(array(
-            'name' => 'Footer column 2',
-            'id' => 'footer-2',
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget' => '</div>',
-            'before_title' => '<h4 class="widget-title">',
-            'after_title' => '</h4>',
-        ));
+	register_sidebar( [
+		'name'          => 'Footer column 2',
+		'id'            => 'footer-2',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	] );
 
-        register_sidebar(array(
-            'name' => 'Footer column 3',
-            'id' => 'footer-3',
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget' => '</div>',
-            'before_title' => '<h4 class="widget-title">',
-            'after_title' => '</h4>',
-        ));
+	register_sidebar( [
+		'name'          => 'Footer column 3',
+		'id'            => 'footer-3',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	] );
 
-        register_sidebar(array(
-            'name' => 'Footer column 4',
-            'id' => 'footer-4',
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget' => '</div>',
-            'before_title' => '<h4 class="widget-title">',
-            'after_title' => '</h4>',
-        ));
+	register_sidebar( [
+		'name'          => 'Footer column 4',
+		'id'            => 'footer-4',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	] );
 
-    }
 }
-add_action( 'widgets_init', 'kleo_widgets_init' );
+add_action( 'widgets_init', 'pool_widgets_init' );
 
+/**
+ * Scripts/Styles load
+ */
+function pool_frontend_files() {
 
+	$min = '';
+	if ( sq_option( 'dev_mode', false ) == false ) {
+		$min = '.min';
+	}
 
-/***************************************************
-:: Scripts/Styles load
-***************************************************/
+	// Modernizr.
+	// wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/modernizr.custom.92164.js', [], '', false );
 
-add_action( 'wp_enqueue_scripts', 'kleo_frontend_files' );
-if ( ! function_exists( 'kleo_frontend_files' ) ) :
-	// Register some javascript files
-	function kleo_frontend_files()
-	{
+	/* Footer scripts */
+	wp_register_script( 'pool-plugins', get_template_directory_uri() . '/assets/js/plugins.js', [ 'jquery' ], '', true );
+	wp_register_script( 'pool-app', get_template_directory_uri() . '/assets/js/functions' . $min . '.js', [ 'jquery', 'kleo-plugins' ], '', true );
+	// wp_enqueue_script( 'modernizr' );
+	wp_enqueue_script( 'pool-plugins' );
+	wp_enqueue_script( 'pool-app' );
 
-        $min = '';
-        if ( sq_option( 'dev_mode', false ) == false )  {
-            $min = '.min';
-        }
-		//head scripts
-		wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/modernizr.custom.92164.js', array(),KLEO_THEME_VERSION, false );
+	$obj_array = [
+		'ajaxurl'        =>  admin_url( 'admin-ajax.php' ),
+		'loadingMessage' => '<i class="icon-refresh animate-spin"></i> ' . esc_html__( 'Sending info, please wait...', 'pool' ),
+		'errorMessage'   => esc_html__('Sorry, an error occurred. Try again later.', 'pool')
+	];
+	$obj_array = apply_filters( 'kleo_localize_app', $obj_array );
 
-		/* Footer scripts */
-		wp_register_script( 'kleo-plugins', get_template_directory_uri() . '/assets/js/plugins.js', array('jquery'),KLEO_THEME_VERSION, true );
-		wp_register_script( 'kleo-app', get_template_directory_uri() . '/assets/js/functions' . $min . '.js', array('jquery', 'kleo-plugins' ),KLEO_THEME_VERSION, true );
+	wp_localize_script( 'kleo-app', 'KLEO', $obj_array );
 
-		//enqueue them
-		wp_enqueue_script('modernizr');
-		wp_enqueue_script('kleo-plugins');
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 
-		wp_enqueue_script('kleo-app');
+	// Register the styles.
+	wp_register_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', [], '', 'all' );
+	wp_register_style( 'pool', get_template_directory_uri() . '/assets/less/theme' . $min . '.css', [], '', 'all' );
+	wp_register_style( 'pool-font-icons', sq_get_fonts_path() , [], '', 'all' );
+	wp_register_style( 'pool-animate', get_template_directory_uri() . '/assets/css/animate.css', [], '', 'all' );
+	wp_register_style( 'magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css', [], '', 'all' );
+	wp_register_style( 'outdatedbrowser', get_template_directory_uri() . '/assets/js/3rd-plugins/outdatedbrowser/outdatedbrowser.min.css', [], '', 'all' );
+	wp_register_style( 'pool-style', CHILD_THEME_URI . '/style.css', [], '', 'all' );
 
-		$obj_array = array(
-            'ajaxurl' =>  admin_url('admin-ajax.php'),
-            'loadingMessage' => '<i class="icon-refresh animate-spin"></i> ' . esc_html__( 'Sending info, please wait...', 'pool' ),
-            'errorMessage' => esc_html__('Sorry, an error occurred. Try again later.', 'pool')
-        );
-        $obj_array = apply_filters( 'kleo_localize_app', $obj_array );
+	// Enqueue registered styles.
+	wp_enqueue_style( 'bootstrap' );
+	wp_enqueue_style( 'pool' );
+	wp_enqueue_style( 'pool-font-icons' );
+	wp_enqueue_style( 'pool-animate' );
+	wp_enqueue_style( 'magnific-popup' );
+	wp_enqueue_style( 'outdatedbrowser' );
 
-		wp_localize_script( 'kleo-app', 'KLEO', $obj_array );
-
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
-
-		// Register the styles
-		wp_register_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), KLEO_THEME_VERSION, 'all' );
-		wp_register_style( 'pool', get_template_directory_uri() . '/assets/less/theme' . $min . '.css', array(), KLEO_THEME_VERSION, 'all' );
-		wp_register_style( 'kleo-font-icons', sq_get_fonts_path() , array(), KLEO_THEME_VERSION, 'all' );
-		wp_register_style( 'kleo-animate', get_template_directory_uri() . '/assets/css/animate.css', array(), KLEO_THEME_VERSION, 'all' );
-		wp_register_style( 'magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css', array(), KLEO_THEME_VERSION, 'all' );
-		wp_register_style( 'outdatedbrowser', get_template_directory_uri() . '/assets/js/3rd-plugins/outdatedbrowser/outdatedbrowser.min.css', array(), KLEO_THEME_VERSION, 'all' );
-
-        wp_register_style( 'kleo-style', CHILD_THEME_URI . '/style.css', array(), KLEO_THEME_VERSION, 'all' );
-
-		//enqueue required styles
-		wp_enqueue_style( 'bootstrap' );
-		wp_enqueue_style( 'pool' );
-		wp_enqueue_style( 'kleo-font-icons' );
-		wp_enqueue_style( 'kleo-animate' );
-		wp_enqueue_style( 'magnific-popup' );
-		wp_enqueue_style( 'outdatedbrowser' );
-
-	} // end kleo_frontend_files()
-endif;
-
+}
+add_action( 'wp_enqueue_scripts', 'pool_frontend_files' );
 
 function sq_get_fonts_path() {
+
 	$fonts_path = get_template_directory_uri() . '/assets/fonts/style.css';
+
 	if ( is_child_theme() && file_exists( CHILD_THEME_DIR . '/assets/fonts/style.css' )) {
 		$fonts_path = get_stylesheet_directory_uri() . '/assets/fonts/style.css';
 	}
@@ -431,20 +402,14 @@ function sq_get_fonts_path() {
 	return $fonts_path;
 }
 
+function pool_load_files_plugin_compat() {
 
-add_action( 'wp_enqueue_scripts', 'kleo_load_files_plugin_compat', 1000 );
-
-function kleo_load_files_plugin_compat()
-{
-	//enqueue child theme style only if activated
-	if (is_child_theme()) {
-		wp_enqueue_style( 'kleo-style' );
+	// Enqueue child theme style only if activated.
+	if ( is_child_theme() ) {
+		wp_enqueue_style( 'pool-style' );
 	}
-
-
-} // kleo_load_css_files_plugin_compat()
-
-
+}
+add_action( 'wp_enqueue_scripts', 'pool_load_files_plugin_compat', 1000 );
 
 /***************************************************
 :: ADMIN CSS
@@ -455,31 +420,29 @@ function kleo_admin_styles() {
 }
 add_action( 'admin_enqueue_scripts', 'kleo_admin_styles' );
 
-
-
-/***************************************************
-:: Customize wp-login.php
-***************************************************/
+/**
+ * Customize wp-login.php
+ */
 function custom_login_css() {
-	echo "\n<style>";
 
+	echo "\n<style>";
 	echo '.login h1 a { background-image: url("'.sq_option('logo','none').'");background-size: contain;min-height: 88px;width:auto;}';
 	echo '#login {padding: 20px 0 0;}';
 	echo '.login #nav a, .login #backtoblog a {color:'.sq_option('header_primary_color').'!important;text-shadow:none;}';
-
 	echo "</style>\n";
+
 }
 add_action( 'login_enqueue_scripts', 'custom_login_css' );
 
-function kleo_new_wp_login_url() { return home_url(); }
-add_filter('login_headerurl', 'kleo_new_wp_login_url');
+function kleo_new_wp_login_url() {
+	return home_url();
+}
+add_filter( 'login_headerurl', 'kleo_new_wp_login_url' );
 
-function kleo_new_wp_login_title() { return get_option('blogname'); }
-add_filter('login_headertitle', 'kleo_new_wp_login_title');
-
-
-
-
+function kleo_new_wp_login_title() {
+	return get_option('blogname');
+}
+add_filter( 'login_headertitle', 'kleo_new_wp_login_title' );
 
 if ( ! function_exists( '_wp_render_title_tag' ) ) {
     function kleo_slug_render_title() {
@@ -490,9 +453,7 @@ if ( ! function_exists( '_wp_render_title_tag' ) ) {
     add_action( 'wp_head', 'kleo_slug_render_title' );
 }
 
-
-
-if (!function_exists('kleo_wp_title')):
+if ( ! function_exists( 'kleo_wp_title' ) ) :
     /**
      * Creates a nicely formatted and more specific title element text
      * for output in head of document, based on current view.
@@ -503,13 +464,14 @@ if (!function_exists('kleo_wp_title')):
      * @param string $sep Optional separator.
      * @return string Filtered title.
      */
-    function kleo_wp_title( $title, $sep )
-    {
+    function kleo_wp_title( $title, $sep ) {
+
         global $paged, $page;
 
         if ( is_feed() ) {
             return $title;
-        }
+		}
+
         // Add the site name.
         $title .= get_bloginfo( 'name' );
 
@@ -517,21 +479,20 @@ if (!function_exists('kleo_wp_title')):
         $site_description = get_bloginfo( 'description', 'display' );
         if ( $site_description && ( is_home() || is_front_page() ) ) {
             $title = "$title $sep $site_description";
-        }
+		}
+
         // Add a page number if necessary.
         if ( $paged >= 2 || $page >= 2 ) {
             $title = "$title $sep " . sprintf( esc_html__( 'Page %s', 'pool' ), max( $paged, $page ) );
         }
 
         return $title;
-    }
+	}
+
     if ( ! function_exists( '_wp_render_title_tag' ) ) {
-        add_filter('wp_title', 'kleo_wp_title', 10, 2);
+        add_filter( 'wp_title', 'kleo_wp_title', 10, 2 );
     }
 endif;
-
-
-
 
 if ( ! function_exists( 'kleo_the_attached_image' ) ) :
     /**
@@ -555,7 +516,7 @@ if ( ! function_exists( 'kleo_the_attached_image' ) ) :
          *     @type int $width  Width of the image in pixels. Default 810.
          * }
          */
-        $attachment_size     = apply_filters( 'kleo_attachment_size', array( 810, 810 ) );
+        $attachment_size     = apply_filters( 'kleo_attachment_size', [ 810, 810 ] );
         $next_attachment_url = wp_get_attachment_url();
 
         /*
@@ -564,7 +525,7 @@ if ( ! function_exists( 'kleo_the_attached_image' ) ) :
          * looking at the last image in a gallery), or, in a gallery of one, just the
          * link to that image file.
          */
-        $attachment_ids = get_posts( array(
+        $attachment_ids = get_posts( [
             'post_parent'    => $post->post_parent,
             'fields'         => 'ids',
             'numberposts'    => -1,
@@ -573,10 +534,11 @@ if ( ! function_exists( 'kleo_the_attached_image' ) ) :
             'post_mime_type' => 'image',
             'order'          => 'ASC',
             'orderby'        => 'menu_order ID',
-        ) );
+        ] );
 
-        // If there is more than 1 attachment in a gallery...
+        // If there is more than 1 attachment in a gallery.
         if ( count( $attachment_ids ) > 1 ) {
+
             foreach ( $attachment_ids as $attachment_id ) {
                 if ( $attachment_id == $post->ID ) {
                     $next_id = current( $attachment_ids );
@@ -584,12 +546,12 @@ if ( ! function_exists( 'kleo_the_attached_image' ) ) :
                 }
             }
 
-            // get the URL of the next image attachment...
+            // Get the URL of the next image attachment.
             if ( $next_id ) {
                 $next_attachment_url = get_attachment_link( $next_id );
             }
 
-            // or get the URL of the first image attachment.
+            // Or get the URL of the first image attachment.
             else {
                 $next_attachment_url = get_attachment_link( array_shift( $attachment_ids ) );
             }
@@ -602,121 +564,149 @@ if ( ! function_exists( 'kleo_the_attached_image' ) ) :
     }
 endif;
 
+/**
+ * Modal AJAX login && modal lost password
+ */
+function kleo_login_settings( $kleo ) {
 
-
-/***************************************************
-:: Modal Ajax login && Modal Lost Password
- ***************************************************/
-
-
-add_filter( 'kleo_theme_settings', 'kleo_login_settings' );
-
-function kleo_login_settings( $kleo )
-{
-    //
-    // Settings Sections
-    //
-
-    $kleo['sec']['kleo_section_login'] = array(
-        'title' => esc_html__( 'Login redirect', 'pool' ),
+	// Settings sections.
+    $kleo['sec']['kleo_section_login'] = [
+        'title'    => esc_html__( 'Login redirect', 'pool' ),
         'priority' => 16
-    );
+	];
 
-    $kleo['set'][] = array(
-        'id' => 'login_redirect',
-        'title' => esc_html__('Login page redirect', 'pool'),
-        'type' => 'select',
-        'default' => 'default',
-        'choices' => array( 'default' => 'Default', 'reload' => 'Reload', 'custom' => 'Custom link'),
-        'section' => 'kleo_section_login',
-        'description' => esc_html__('Default: WordPress default behaviour. Reload: will reload current page.', 'pool'),
-    );
+    $kleo['set'][] = [
+        'id'          => 'login_redirect',
+        'title'       => esc_html__( 'Login page redirect', 'pool' ),
+        'type'        => 'select',
+        'default'     => 'default',
+        'choices'     => [
+			'default' => 'Default',
+			'reload'  => 'Reload',
+			'custom'  => 'Custom link'
+		],
+        'section'     => 'kleo_section_login',
+        'description' => esc_html__( 'Default: WordPress default behaviour. Reload: will reload current page.', 'pool' ),
+	];
 
-    $kleo['set'][] = array(
-        'id' => 'login_redirect_custom',
-        'title' => esc_html__( 'Custom link redirect', 'pool' ),
-        'type' => 'text',
-        'default' => '',
-        'section' => 'kleo_section_login',
-        'description' => wp_kses( __('Set a link like http://yoursite.com/homepage for users to get redirected on login.<br> ' .
-            'For more complex redirect logic please set Login redirect to Default WordPress and use Peter\'s redirect plugin or similar.', 'pool'), array( 'br' => array() ) ),
-        'condition' => array( 'login_redirect', 'custom' )
-    );
-
+    $kleo['set'][] = [
+        'id'          => 'login_redirect_custom',
+        'title'       => esc_html__( 'Custom link redirect', 'pool' ),
+        'type'        => 'text',
+        'default'     => '',
+        'section'     => 'kleo_section_login',
+        'description' => wp_kses(
+			__( 'Set a link like http://yoursite.com/homepage for users to get redirected on login.<br> ' .
+			'For more complex redirect logic please set Login redirect to Default WordPress and use Peter\'s redirect plugin or similar.', 'pool' ), [ 'br' => [] ]
+		),
+        'condition' => [
+			'login_redirect',
+			'custom'
+		]
+	];
 
     return $kleo;
 
 }
-
-add_action( 'wp_footer', 'kleo_load_popups', 12 );
+add_filter( 'kleo_theme_settings', 'kleo_login_settings' );
 
 function kleo_load_popups() {
     get_template_part( 'page-parts/general-popups' );
 }
+add_action( 'wp_footer', 'kleo_load_popups', 12 );
 
-add_action( 'init', 'kleo_ajax_login' );
+if ( ! function_exists( 'kleo_ajax_login' ) ) {
+    function kleo_ajax_login() {
 
-if (! function_exists('kleo_ajax_login')){
-    function kleo_ajax_login()
-    {
-
-        /* If not our action, bail out */
-        if (! isset($_POST['action']) || ( isset($_POST['action']) && $_POST['action'] != 'kleoajaxlogin' ) ) {
+        // If not our action, bail out.
+        if ( ! isset( $_POST['action'] ) || ( isset( $_POST['action'] ) && $_POST['action'] != 'kleoajaxlogin' ) ) {
             return false;
         }
 
-        /* If user is already logged in print a specific message */
+        // If user is already logged in print a specific message.
         if ( is_user_logged_in() ) {
             $link = "javascript:window.location.reload();return false;";
             echo json_encode(
-                array(
+                [
                     'loggedin' => false,
                     'message' => '<i class="icon-info-outline"></i> ' .
                         wp_kses(
                             sprintf( __( 'You are already logged in. Please <a href="#" onclick="%s">refresh</a> page', 'pool' ), $link ),
-                            array( 'a' => array( 'href' => true, 'onclick' => true ) )
+                            [
+								'a' => [
+									'href'    => true,
+									'onclick' => true
+								]
+							]
                         )
-                )
+				]
             );
             die();
         }
 
-        // Check the nonce, if it fails the function will break
+        // Check the nonce, if it fails the function will break.
         check_ajax_referer( 'kleo-ajax-login-nonce', 'security-login' );
 
-        // Nonce is checked, continue
+        // Nonce is checked, continue.
         $secure_cookie = '';
 
         // If the user wants ssl but the session is not ssl, force a secure cookie.
-        if ( !empty($_POST['log']) && !force_ssl_admin() ) {
-            $user_name = sanitize_user($_POST['log']);
-            if ( $user = get_user_by('login', $user_name) ) {
-                if ( get_user_option('use_ssl', $user->ID) ) {
+        if ( ! empty( $_POST['log'] ) && ! force_ssl_admin() ) {
+
+			$user_name = sanitize_user( $_POST['log'] );
+
+            if ( $user = get_user_by( 'login', $user_name ) ) {
+
+                if ( get_user_option( 'use_ssl', $user->ID ) ) {
+
                     $secure_cookie = true;
-                    force_ssl_admin(true);
+                    force_ssl_admin( true );
                 }
             }
         }
 
         if ( isset( $_REQUEST['redirect_to'] ) ) {
-            $redirect_to = $_REQUEST['redirect_to'];
-            // Redirect to https if user wants ssl
-            if ( $secure_cookie && false !== strpos($redirect_to, 'wp-admin') )
-                $redirect_to = preg_replace('|^http://|', 'https://', $redirect_to);
+
+			$redirect_to = $_REQUEST['redirect_to'];
+
+            // Redirect to https if user wants SSL.
+            if ( $secure_cookie && false !== strpos( $redirect_to, 'wp-admin' ) )
+				$redirect_to = preg_replace( '|^http://|', 'https://', $redirect_to );
+
         } else {
             $redirect_to = '';
         }
 
-        $user_signon = wp_signon( '', $secure_cookie );
+		$user_signon = wp_signon( '', $secure_cookie );
+
         if ( is_wp_error( $user_signon ) ) {
+
             $error_msg = $user_signon->get_error_message();
-            echo json_encode(array( 'loggedin' => false, 'message' => '<span class="wrong-response"><i class="icon-warning"></i> ' . wp_kses_data( $error_msg ) . '</span>' ));
-            //echo json_encode(array( 'loggedin' => false, 'message' => '<span class="wrong-response"><i class="icon-warning"></i> ' . esc_html__( 'Wrong username or password. Please try again.', 'pool' ) . '</span>' ));
+            echo json_encode(
+				[
+					'loggedin' => false,
+					'message'  => '<span class="wrong-response"><i class="icon-warning"></i> ' . wp_kses_data( $error_msg ) . '</span>'
+				]
+			);
+			/**
+			 * echo json_encode(
+			 * 	[
+			 * 		'loggedin' => false,
+			 * 		'message'  => '<span class="wrong-response"><i class="icon-warning"></i> ' . esc_html__( 'Wrong username or password. Please try again.', 'pool' ) . '</span>'
+			 * 	]
+			 * );
+			 */
+
         } else {
+
             if ( sq_option( 'login_redirect' , 'default' ) == 'reload' ) {
-                $redirecturl = NULL;
+
+				$redirecturl = NULL;
+
             } else {
-                $requested_redirect_to = isset( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : '';
+
+				$requested_redirect_to = isset( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : '';
+
                 /**
                  * Filter the login redirect URL.
                  *
@@ -731,45 +721,50 @@ if (! function_exists('kleo_ajax_login')){
             }
 
             echo json_encode(
-                array(
-                    'loggedin' => true,
+                [
+                    'loggedin'    => true,
                     'redirecturl' => $redirecturl,
-                    'message'=> '<span class="good-response"><i class="icon-check"></i> ' .
+                    'message'     => '<span class="good-response"><i class="icon-check"></i> ' .
                         esc_html__( 'Login successful, redirecting...', 'pool' ) . '</span>'
-                )
+                ]
             );
         }
 
         die();
-    }
+	}
+	add_action( 'init', 'kleo_ajax_login' );
 }
 
-
 if ( ! function_exists( 'kleo_lost_password_ajax' )) {
-    function kleo_lost_password_ajax()
-    {
+    function kleo_lost_password_ajax() {
+
         $errors = new WP_Error();
 
-        if ( isset($_POST) ) {
+        if ( isset( $_POST ) ) {
 
-            // Check the nonce, if it fails the function will break
+            // Check the nonce, if it fails the function will break.
             check_ajax_referer( 'kleo-ajax-lost-pass-nonce', 'security_lost_pass' );
 
             if ( empty( $_POST['user_login'] ) ) {
+
                 $errors->add(
                     'empty_username',
                     wp_kses_data( __( '<strong>ERROR</strong>: Enter a username or e-mail address.', 'default' ) )
-                );
-            } else if ( strpos( $_POST['user_login'], '@' ) ) {
+				);
+
+            } elseif ( strpos( $_POST['user_login'], '@' ) ) {
+
 	            $user_data = get_user_by( 'email', trim( wp_unslash( $_POST['user_login'] ) ) );
                 if ( empty( $user_data ) )
                     $errors->add(
                         'invalid_email',
                         wp_kses_data( __( '<strong>ERROR</strong>: There is no user registered with that email address.', 'default' ) )
-                    );
+					);
+
             } else {
-                $login = trim($_POST['user_login']);
-                $user_data = get_user_by('login', $login);
+
+                $login = trim( $_POST['user_login'] );
+                $user_data = get_user_by( 'login', $login );
             }
 
 	        /**
@@ -799,7 +794,7 @@ if ( ! function_exists( 'kleo_lost_password_ajax' )) {
             // Redefining user_login ensures we return the right case in the email.
             $user_login = $user_data->user_login;
             $user_email = $user_data->user_email;
-	        $key = get_password_reset_key( $user_data );
+	        $key        = get_password_reset_key( $user_data );
 
 	        if ( is_wp_error( $key ) ) {
 		        echo '<span class="wrong-response">' . $key->get_error_message() . '</span>';
@@ -809,20 +804,21 @@ if ( ! function_exists( 'kleo_lost_password_ajax' )) {
             $message = esc_html__( 'Someone requested that the password be reset for the following account:', 'default' ) . "\r\n\r\n";
             $message .= network_home_url( '/' ) . "\r\n\r\n";
             $message .= sprintf( esc_html__( 'Username: %s', 'default' ), $user_login ) . "\r\n\r\n";
-            $message .= esc_html__('If this was a mistake, just ignore this email and nothing will happen.', 'default' ) . "\r\n\r\n";
-            $message .= esc_html__('To reset your password, visit the following address:', 'default') . "\r\n\r\n";
-            $message .= '<' . network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login' ) . ">\r\n";
+            $message .= esc_html__( 'If this was a mistake, just ignore this email and nothing will happen.', 'default' ) . "\r\n\r\n";
+            $message .= esc_html__( 'To reset your password, visit the following address:', 'default') . "\r\n\r\n";
+            $message .= '<' . network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' ) . ">\r\n";
 
-            if ( is_multisite() )
-	            $blogname = get_network()->site_name;
-            else
+            if ( is_multisite() ) {
+				$blogname = get_network()->site_name;
+			} else {
                 /*
                  * The blogname option is escaped with esc_html on the way into the database
                  * in sanitize_option we want to reverse this for the plain text arena of emails.
                  */
-                $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
+				$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
+			}
 
-            $title = sprintf( esc_html__('[%s] Password Reset', 'default'), $blogname );
+            $title = sprintf( esc_html__( '[%s] Password Reset', 'default' ), $blogname );
 
 	        /**
 	         * Filters the subject of the password reset email.
@@ -849,29 +845,23 @@ if ( ! function_exists( 'kleo_lost_password_ajax' )) {
 	         */
 	        $message = apply_filters( 'retrieve_password_message', $message, $key, $user_login, $user_data );
 
-
             if ( $message && ! wp_mail( $user_email, wp_specialchars_decode( $title ), $message ) ) {
-                echo '<span class="wrong-response">' . esc_html__( "Failure!", 'pool' );
+                echo '<span class="wrong-response">' . esc_html__( 'Failure!', 'pool' );
                 echo esc_html__( 'The e-mail could not be sent.', 'default' );
-                echo "</span>";
+                echo '</span>';
                 die();
             } else {
-                echo '<span class="good-response">' . esc_html__( "Email successfully sent!", 'pool' )."</span>";
+                echo '<span class="good-response">' . esc_html__( 'Email successfully sent!', 'pool' ) . '</span>';
                 die();
             }
         }
         die();
     }
 }
-add_action("wp_ajax_kleo_lost_password","kleo_lost_password_ajax");
-add_action('wp_ajax_nopriv_kleo_lost_password', 'kleo_lost_password_ajax');
+add_action( 'wp_ajax_kleo_lost_password', 'kleo_lost_password_ajax' );
+add_action( 'wp_ajax_nopriv_kleo_lost_password', 'kleo_lost_password_ajax' );
 
-
-
-/***************************************************
-:: Custom redirect from Theme options - Login redirect
- ***************************************************/
-
+// Custom redirect from Theme options - Login redirect.
 if ( sq_option( 'login_redirect', 'default' ) == 'custom' && sq_option( 'login_redirect_custom', '' ) != '' ) {
     add_filter( 'login_redirect', 'kleo_custom_redirect', 12, 3 );
 }
@@ -885,27 +875,22 @@ if ( sq_option( 'login_redirect', 'default' ) == 'custom' && sq_option( 'login_r
  * @return string
  */
 function kleo_custom_redirect( $redirect_to, $requested_redirect_to, $user  ) {
-    if ( ($requested_redirect_to == ''|| $requested_redirect_to != home_url() ) && ! is_wp_error( $user ) ) {
+
+    if ( ( $requested_redirect_to == ''|| $requested_redirect_to != home_url() ) && ! is_wp_error( $user ) ) {
         $redirect_to = sq_option( 'login_redirect_custom', '' );
         $redirect_to = str_replace( '##member_name##', $user->user_login, $redirect_to );
     }
     return $redirect_to;
 }
 
-// -----------------------------------------------------------------------------
-
-
-/***************************************************
-:: Render the footer columns
- ***************************************************/
-
+/**
+ * Render the footer columns
+ */
 function add_footer_widgets_columns() {
 
 	if ( ! is_active_sidebar( 'footer-1' ) && ! is_active_sidebar( 'footer-2' ) && ! is_active_sidebar( 'footer-3' ) && ! is_active_sidebar( 'footer-4' ) ) {
 		return;
-	}
-
-    ?>
+	} ?>
     <div id="footer" class="footer-color border-top">
         <div class="container-full">
             <div class="template-page tpl-no">
@@ -913,34 +898,22 @@ function add_footer_widgets_columns() {
                     <div class="row">
                         <div class="col-sm-3">
                             <div id="footer-sidebar-1" class="footer-sidebar widget-area" role="complementary">
-                                <?php
-                                if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-1')):
-                                endif;
-                                ?>
+                                <?php if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'footer-1' ) ) : endif; ?>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div id="footer-sidebar-2" class="footer-sidebar widget-area" role="complementary">
-                                <?php
-                                if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-2')):
-                                endif;
-                                ?>
+								<?php if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'footer-2' ) ) : endif; ?>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div id="footer-sidebar-3" class="footer-sidebar widget-area" role="complementary">
-                                <?php
-                                if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-3')):
-                                endif;
-                                ?>
+								<?php if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'footer-3' ) ) : endif; ?>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div id="footer-sidebar-4" class="footer-sidebar widget-area" role="complementary">
-                                <?php
-                                if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-4')):
-                                endif;
-                                ?>
+								<?php if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'footer-4' ) ) : endif; ?>
                             </div>
                         </div>
                     </div>
@@ -948,8 +921,6 @@ function add_footer_widgets_columns() {
             </div>
         </div>
     </div><!-- #footer -->
-
     <?php
 }
-
 add_action( 'kleo_after_content', 'add_footer_widgets_columns', 20 );
