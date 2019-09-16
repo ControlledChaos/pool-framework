@@ -6,11 +6,11 @@ class Kleo {
      * Initialization args
      */
     public static $config = array();
-		
+
 	public static $custom_css;
 
 	/**
-	 * Constructor method for the Kleo class. It controls the load order of the required files for running 
+	 * Constructor method for the Kleo class. It controls the load order of the required files for running
 	 * the framework.
 	 *
 	 * @since 1.0.0
@@ -66,7 +66,7 @@ class Kleo {
 	}
 
 	/**
-	 * Defines the constant paths for use within the core framework, parent theme, and child theme.  
+	 * Defines the constant paths for use within the core framework, parent theme, and child theme.
 	 *
 	 * @since 1.0.0
 	 */
@@ -74,7 +74,7 @@ class Kleo {
 
 		/* Sets the framework version number. */
 		define( 'KLEO_VERSION', '3.0' );
-        
+
 		/* Sets the framework domain */
 		define( 'KLEO_DOMAIN', str_replace(" ","_",strtolower(wp_get_theme())) );
 
@@ -91,20 +91,20 @@ class Kleo {
 		define( 'CHILD_THEME_URI', get_stylesheet_directory_uri() );
 
 		/* Sets the path to the core framework directory. */
-		define( 'KLEO_DIR', trailingslashit( THEME_DIR ) . 'kleo-framework' );
+		define( 'KLEO_DIR', trailingslashit( THEME_DIR ) . 'framework' );
 
 		/* Sets the path to the core framework directory URI. */
-		define( 'KLEO_URI', trailingslashit( THEME_URI ) . 'kleo-framework' );
+		define( 'KLEO_URI', trailingslashit( THEME_URI ) . 'framework' );
 
 		/* Sets the path to the theme framework folder. */
-		define( 'KLEO_FW_DIR', trailingslashit( THEME_DIR ) . 'kleo-framework' );
+		define( 'KLEO_FW_DIR', trailingslashit( THEME_DIR ) . 'framework' );
 
 		/* Sets the url to the theme framework folder. */
-		define( 'KLEO_FW_URI', trailingslashit( THEME_URI ) . 'kleo-framework' );
+		define( 'KLEO_FW_URI', trailingslashit( THEME_URI ) . 'framework' );
 
 		/* Sets the path to the theme library folder. */
 		define( 'KLEO_LIB_DIR', trailingslashit( THEME_DIR ) . 'lib' );
-		
+
 		/* Sets the url to the theme library folder. */
 		define( 'KLEO_LIB_URI', trailingslashit( THEME_URI ) . 'lib' );
 
@@ -114,7 +114,7 @@ class Kleo {
 	}
 
 	/**
-	 * Loads the core framework functions.  These files are needed before loading anything else in the 
+	 * Loads the core framework functions.  These files are needed before loading anything else in the
 	 * framework because they have required functions for use.
 	 *
 	 * @since 1.0.0
@@ -147,24 +147,24 @@ class Kleo {
 		}
 	}
 
-	
+
 	/**
 	 * Adds the default framework actions and filters.
 	 *
 	 * @since 1.0.0
 	 */
-	function default_filters() 
+	function default_filters()
 	{
 
 		/* Remove bbPress theme compatibility if current theme supports bbPress. */
 		if ( current_theme_supports( 'bbpress' ) ) {
 			remove_action( 'bbp_init', 'bbp_setup_theme_compat', 8 );
 		}
-		
+
 		/* Make text widgets and term descriptions shortcode aware. */
 		add_filter( 'widget_text', 'do_shortcode' );
 		add_filter( 'term_description', 'do_shortcode' );
-		
+
 	}
 
 }

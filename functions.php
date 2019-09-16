@@ -15,7 +15,7 @@ if ( ! isset( $content_width ) ) {
     $content_width = 1200;
 }
 
-require_once get_parent_theme_file_path( '/kleo-framework/kleo.php' );
+require_once get_parent_theme_file_path( '/framework/kleo.php' );
 
 // Set some theme configuration options.
 Kleo::init_config( [
@@ -153,10 +153,10 @@ function kleo_theme_functions() {
     require_once( KLEO_LIB_DIR . '/menu.php' );
 
     // Custom menu.
-    require_if_theme_supports('kleo-menu-custom', KLEO_LIB_DIR . '/menu-custom.php');
+    require_if_theme_supports( 'kleo-menu-custom', KLEO_LIB_DIR . '/menu-custom.php' );
 
     // Custom menu items.
-    require_if_theme_supports('kleo-menu-items', KLEO_LIB_DIR . '/menu-items.php');
+    require_if_theme_supports( 'kleo-menu-items', KLEO_LIB_DIR . '/menu-items.php' );
 
     // Include admin customizations.
     if ( is_customize_preview() ) {
@@ -165,7 +165,7 @@ function kleo_theme_functions() {
 
     // Meta boxes.
     if ( is_admin() ) {
-        require_once(KLEO_LIB_DIR . '/metaboxes.php');
+        require_once( KLEO_LIB_DIR . '/metaboxes.php' );
     }
 
     // Dynamic CSS generation.
@@ -198,7 +198,7 @@ function kleo_theme_functions() {
     }
 
     // Cleverness TodoList compatibility.
-    if ( class_exists('CTDL_Widget')) {
+    if ( class_exists( 'CTDL_Widget' )) {
         require_once( KLEO_LIB_DIR . '/plugins/ctdl.php' );
     }
 
@@ -216,16 +216,16 @@ function kleo_theme_functions() {
 add_action( 'after_setup_theme', 'kleo_theme_functions', 12 );
 
 // Load theme-specific functions.
-require_once get_parent_theme_file_path( 'theme-functions.php' );
+require_once get_parent_theme_file_path( '/lib/theme-functions.php' );
 
 // Load theme panel.
 if ( is_admin() ) {
-    require_once get_parent_theme_file_path( 'theme-panel/init.php' );
+    require_once get_parent_theme_file_path( '/lib/theme-panel/init.php' );
 }
 
 // File importer.
 if ( is_admin() ) {
-    require_once get_parent_theme_file_path( '/importer/import.php' );
+    require_once get_parent_theme_file_path( '/lib/importer/import.php' );
 }
 
 // Load components.
